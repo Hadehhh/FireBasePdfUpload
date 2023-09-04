@@ -1,0 +1,49 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:elevation="30dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/baseline_download_for_offline_24"
+            android:visibility="visible"
+            />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:layout_gravity="bottom|end"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:max="100"
+        android:visibility="gone"
+        android:indeterminateDrawable="@drawable/progress_drawable"
+        />
+
+    <TextView
+        android:id="@+id/tvPdfName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pdf"
+        android:padding="30dp"
+        android:textSize="20sp"
+        />
+
+</FrameLayout>
+
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

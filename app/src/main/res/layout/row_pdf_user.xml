@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="16dp"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    android:backgroundTint="@color/cv"
+    app:cardElevation="5dp"
+    app:contentPadding="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/pdfRl"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/white">
+
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/pdfView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:id="@+id/category_Tv"
+            android:layout_toEndOf="@id/pdfRl"
+            android:layout_toStartOf="@+id/moreBtn"
+            android:maxLines="1"
+            android:text="Kategori"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_Tv"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_toEndOf="@id/pdfRl"
+            android:layout_toStartOf="@+id/moreBtn"
+            android:layout_below="@id/category_Tv"
+            android:maxLines="1"
+            android:text="Judul"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:id="@+id/description_Tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_Tv"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:layout_toEndOf="@id/pdfRl"
+            android:maxLines="4"
+            android:text="Deskripsi" />
+
+        <TextView
+            android:id="@+id/size_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/pdfRl"
+            android:maxLines="1"
+            android:text="Ukuran File"/>
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:maxLines="1"
+            android:text="Tanggal upload"
+            android:textAlignment="center"/>
+
+        <ImageButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_more_vert_24"
+            android:padding="5dp"
+            android:background="@android:color/transparent"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/beranda"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Beranda"/>
+    <item
+        android:id="@+id/bookmark"
+        android:enabled="true"
+        android:icon="@drawable/baseline_bookmark_24"
+        android:title="Markah"/>
+    <item
+        android:id="@+id/search"
+        android:enabled="true"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Cari"/>
+    <item
+        android:id="@+id/account"
+        android:enabled="true"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Akun"/>
+</menu>
