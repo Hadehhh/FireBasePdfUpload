@@ -39,10 +39,10 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 //        reset to default values
-        binding.accountTypeTv.text="N/A"
+//        binding.accountTypeTv.text="N/A"
         binding.memberDateTv.text="N/A"
         binding.favouritePdfscountTv.text="N/A"
-        binding.accountStatustv.text="N/A"
+//        binding.accountStatustv.text="N/A"
 
         firebaseAuth= FirebaseAuth.getInstance()
         firebaseUser=firebaseAuth.currentUser!!
@@ -50,8 +50,15 @@ class ProfileActivity : AppCompatActivity() {
         loadFavPdfs()
 
 //        binding
-        binding.backBtn.setOnClickListener {
-            onBackPressed()
+//        binding.backBtn.setOnClickListener {
+//            onBackPressed()
+//        }
+        binding.btnLogout.setOnClickListener{
+            firebaseAuth.signOut()
+            Toast.makeText(this,"Logout Successfully",Toast.LENGTH_SHORT).show()
+            val intent=Intent(this@ProfileActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
         binding.profileEdit.setOnClickListener {
             val intent= Intent(this,ProfileEditActivity::class.java)
@@ -59,18 +66,66 @@ class ProfileActivity : AppCompatActivity() {
         }
 
 //        handle click ,verify user if not
-        binding.accountStatustv.setOnClickListener {
-            if(firebaseUser.isEmailVerified)
-            {
-                Toast.makeText(this,"Already verified..", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
-                emailVerificationDialog()
+//        binding.accountStatustv.setOnClickListener {
+//            if(firebaseUser.isEmailVerified)
+//            {
+//                Toast.makeText(this,"Already verified..", Toast.LENGTH_SHORT).show()
+//            }
+//            else
+//            {
+//                emailVerificationDialog()
+//            }
+//        }
+
+        binding.bottomNavigation.menu.findItem(R.id.account).isChecked = true
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.beranda -> {
+                    // Respond to navigation item 1 click
+                    val intent= Intent(this,HomeUser::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.bookmark -> {
+                    // Respond to navigation item 2 click
+                    val intent= Intent(this,BookmarkActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.search -> {
+                    // Respond to navigation item 2 click
+                    val intent= Intent(this,SearchActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.account -> {
+                    // Respond to navigation item 2 click
+                    val intent= Intent(this,ProfileActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+                else -> return@setOnItemSelectedListener false
             }
         }
+        binding.bottomNavigation.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.beranda -> {
+                    // Respond to navigation item 1 reselection
+                }
 
+                R.id.bookmark -> {
+                    // Respond to navigation item 2 reselection
+                }
 
+                R.id.search -> {
+                    // Respond to navigation item 2 reselection
+                }
+
+                R.id.account -> {
+                    // Respond to navigation item 2 reselection
+                }
+            }
+        }
     }
 
     private fun emailVerificationDialog() {
@@ -106,14 +161,14 @@ class ProfileActivity : AppCompatActivity() {
 
 //        check if user is verified or not
 
-        if(firebaseUser.isEmailVerified)
-        {
-            binding.accountStatustv.text="Verified"
-        }
-        else
-        {
-            binding.accountStatustv.text=" Not Verified"
-        }
+//        if(firebaseUser.isEmailVerified)
+//        {
+//            binding.accountStatustv.text="Verified"
+//        }
+//        else
+//        {
+//            binding.accountStatustv.text=" Not Verified"
+//        }
 //        db ref to load user info
         val ref= FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!)
@@ -133,7 +188,7 @@ class ProfileActivity : AppCompatActivity() {
                     binding.nameTv.text=name
                     binding.emailTv.text=email
                     binding.memberDateTv.text=formattedDate
-                    binding.accountTypeTv.text=userType
+//                    binding.accountTypeTv.text=userType
 
 //                    set image
                     try{
@@ -177,7 +232,7 @@ class ProfileActivity : AppCompatActivity() {
                     }
                     binding.favouritePdfscountTv.text="${pdfsArrayList.size}"
                     adapterPdfFav=AdapterPdfFav(this@ProfileActivity,pdfsArrayList)
-                    binding.favRv.adapter=adapterPdfFav
+//                    binding.favRv.adapter=adapterPdfFav
                 }
 
                 override fun onCancelled(error: DatabaseError) {

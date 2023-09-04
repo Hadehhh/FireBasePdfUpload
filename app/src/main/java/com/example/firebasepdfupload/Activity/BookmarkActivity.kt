@@ -34,9 +34,11 @@ class BookmarkActivity : AppCompatActivity() {
         loadBookmark()
 
 //        binding
-        binding.backBtn.setOnClickListener {
-            onBackPressed()
-        }
+//        binding.backBtn.setOnClickListener {
+//            onBackPressed()
+//        }
+
+        binding.bottomNavigation.menu.findItem(R.id.bookmark).setChecked(true)
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.beranda -> {
@@ -53,7 +55,7 @@ class BookmarkActivity : AppCompatActivity() {
                 }
                 R.id.search -> {
                     // Respond to navigation item 2 click
-                    val intent= Intent(this,ProfileEditActivity::class.java)
+                    val intent= Intent(this,SearchActivity::class.java)
                     startActivity(intent)
                     return@setOnItemSelectedListener true
                 }

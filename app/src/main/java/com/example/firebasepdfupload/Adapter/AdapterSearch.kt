@@ -30,6 +30,8 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
 
     private var filter: FilterSearch?=null
 
+    private lateinit var dataList: List<ModelPdf>
+
 
 //    now we will create a filter class to enable searching
 
@@ -84,7 +86,7 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         holder.itemView.setOnClickListener {
 //            pass pdfId in intent that will be used to get pdf info
             val intent= Intent(context, PdfDetailsActivity::class.java)
-            intent.putExtra("pdfId",pdfId)
+            intent.putExtra("Title",dataList[holder.adapterPosition].title)
             context.startActivity(intent)
         }
     }
@@ -102,8 +104,10 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
 
 
     }
-
-
+    fun searchDataList(searchList: List<ModelPdf>){
+        dataList = searchList
+        notifyDataSetChanged()
+    }
 }
 
 /*class AdapterSearch(private val context: Context, private var dataList: List<ModelPdf>) :
