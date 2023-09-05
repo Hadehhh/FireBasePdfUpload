@@ -33,11 +33,10 @@ class HomeAdmin : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth= FirebaseAuth.getInstance()
-        checkUser()
         loadCategories()
 
 //        search
-        binding.searchBar.addTextChangedListener(object : TextWatcher {
+        /*binding.searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -66,7 +65,7 @@ class HomeAdmin : AppCompatActivity() {
             val intent = Intent(this@HomeAdmin, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }
+        }*/
 
 //    handle click ,start add category page
         binding.categoryBtn.setOnClickListener {
@@ -114,22 +113,5 @@ class HomeAdmin : AppCompatActivity() {
             }
 
         })
-    }
-
-    private fun checkUser()
-    {
-        val firebaseUser=firebaseAuth.currentUser
-        if(firebaseUser==null)
-        {
-//            not logged in go to main screen
-            intent= Intent(this@HomeAdmin, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-        else{
-//            logged in and show user info
-            val email=firebaseUser.email
-            binding.subTitleTv.text=email
-        }
     }
 }

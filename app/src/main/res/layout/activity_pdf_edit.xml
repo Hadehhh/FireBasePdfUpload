@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.PdfEditActivity">
+    tools:context=".Activity.PdfActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar_up"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/back_image"
             android:layout_width="37dp"
             android:layout_height="30dp"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="5dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.022" />
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/logo_iv"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="39dp"
-            android:src="@drawable/baseline_menu_book_24" />
-
         <TextView
-            android:layout_width="350dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="180dp"
-            android:text="edit_book_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Ubah Rincian Pdf"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/blueText"
             android:textSize="30sp" />
 
     </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_iv"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/toolbar_up"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pdf17"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="477dp" />
+
     <EditText
         android:id="@+id/pdf_title_edt"
-        android:layout_width="300dp"
+        android:layout_below="@id/logo_iv"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
         android:drawableStart="@drawable/baseline_picture_as_pdf_24"
         android:drawablePadding="10sp"
         android:ems="10"
-        android:hint="Book Title"
+        android:hint="Judul"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,53 +70,54 @@
 
     <EditText
         android:id="@+id/pdf_des_edt"
-        android:layout_width="300dp"
+        android:layout_below="@id/pdf_title_edt"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:drawableStart="@drawable/baseline_picture_as_pdf_24"
         android:drawablePadding="10sp"
         android:ems="10"
-        android:hint="Book Description"
+        android:hint="Deskripsi"
         android:inputType="textMultiLine|textCapSentences"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pdf_title_edt" />
+
     <TextView
         android:id="@+id/pdf_cat_tv"
-        android:layout_width="300sp"
+        android:layout_below="@id/pdf_des_edt"
+        android:layout_width="350sp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp"
-        app:drawableStartCompat="@drawable/baseline_menu_book_24"
-        app:drawableEndCompat="@drawable/baseline_arrow_back_24"
+        android:layout_marginHorizontal="20dp"
+        app:drawableStartCompat="@drawable/baseline_category_24"
+        app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
         android:drawablePadding="10dp"
         android:padding="10dp"
-        android:hint="book_category"
+        android:hint="Kategori"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pdf_des_edt"
+        app:layout_constraintTop_toBottomOf="@id/pdf_des_edt" />
 
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/updateButton"
-        android:layout_width="300sp"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_below="@id/pdf_cat_tv"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="update"
-        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/blueText"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Ubah Rincian"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:cornerRadius="50sp"
-        app:layout_constraintTop_toBottomOf="@+id/pdf_cat_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:icon="@drawable/baseline_edit_24" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

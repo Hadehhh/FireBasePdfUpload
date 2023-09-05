@@ -19,13 +19,14 @@
             android:id="@+id/category_tv"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="category_title"
+            android:text="Nama Kategori"
             android:textColor="@color/black"/>
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/delete_btn"
-            android:src="@drawable/baseline_delete_24"
+            android:backgroundTint="#B3261E"
+            android:src="@drawable/baseline_delete_outline_24"
             />
     </LinearLayout>
 

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.CategoryAddActivity">
+
     <RelativeLayout
         android:id="@+id/toolbar_up"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,64 +19,71 @@
             android:id="@+id/back_image"
             android:layout_width="37dp"
             android:layout_height="30dp"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="5dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.022" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/logo_iv"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="39dp"
-            android:src="@drawable/login" />
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="180dp"
-            android:text="Add New Category"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Tambah Kategori"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textColor="@color/blueText"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_iv"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:layout_below="@id/toolbar_up"
+        android:src="@drawable/category" />
+
     <EditText
         android:id="@+id/category_et"
+        android:layout_below="@id/logo_iv"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/blue"
-        android:drawableStart="@drawable/add_acc"
-        android:drawablePadding="10sp"
+        android:drawableStart="@drawable/baseline_category_24"
+        android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Category Title"
-        android:inputType="textEmailAddress"
+        android:hint="Nama Kategori"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_up" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/submitButton"
+        android:layout_centerHorizontal="true"
         android:layout_width="300sp"
+        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/blue"
-        android:text="submit"
-        android:textColor="@color/white"
+        android:backgroundTint="@color/blueText"
+        android:layout_below="@id/category_et"
+        android:text="Tambah"
+        app:icon="@drawable/baseline_add_24"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
-        app:cornerRadius="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_et" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
