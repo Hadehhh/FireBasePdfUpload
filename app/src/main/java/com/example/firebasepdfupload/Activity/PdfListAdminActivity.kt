@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.util.Log
 import com.example.firebasepdfupload.Adapter.AdapterPdfAdmin
 import com.example.firebasepdfupload.Model.ModelPdf
-import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityPdfListAdminBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -100,13 +99,10 @@ class PdfListAdminActivity : AppCompatActivity() {
 //                    setup adapter
                     adapterPdfAdmin= AdapterPdfAdmin(this@PdfListAdminActivity,pdfArrayList)
                     binding.pdfsRv.adapter=adapterPdfAdmin
-
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
             })
-
     }
 }

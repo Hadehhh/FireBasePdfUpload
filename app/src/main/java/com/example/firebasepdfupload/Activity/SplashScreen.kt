@@ -33,15 +33,13 @@ class SplashScreen : AppCompatActivity() {
                     currentImageIndex++
                     handler.postDelayed(this, SPLASH_TIME_OUT)
                 } else {
-//                     Pindah ke activity berikutnya setelah semua gambar ditampilkan
-//                     Misalnya, MainActivity
+//                   Pindah ke activity berikutnya setelah semua gambar ditampilkan
                      val intent = Intent(this@SplashScreen, LoginActivity::class.java)
                      startActivity(intent)
                      finish()
                 }
             }
         }
-
         handler.post(runnable)
     }
 }

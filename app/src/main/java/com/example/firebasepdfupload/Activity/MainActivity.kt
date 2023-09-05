@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
 //    }
     companion object{
 
-//        created a static method to convert timestamp to proper date format ,so we can use it
-//        everywhere in project ,no need to rewrite again
-
         fun formatTimeStamp(timestamp: Long): String {
             val cal = Calendar.getInstance()
             cal.timeInMillis = timestamp
@@ -37,18 +34,18 @@ class MainActivity : AppCompatActivity() {
             return dateFormat.format(cal.time).toString()
         }
 
-        //        fun to get PDf Size
+        //        Fun to get PDF Size
         @SuppressLint("SetTextI18n")
         fun loadPdfSize(pdfUrl:String, pdfTitle:String, sizeTv: TextView){
             val TAG="PDF_SIZE_TAG"
-//          using url we can get file and its metadata from firebase storage
+//          Using url we can get file and its metadata from firebase storage
             val ref=FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             ref.metadata
                 .addOnSuccessListener {
                     Log.d(TAG,"loadPdfSize: got metadata")
                     val bytes=it.sizeBytes.toDouble()
                     Log.d(TAG,"loadPdfSize:Size Bytes $bytes")
-//                    convert bytes to KB
+//                  Convert bytes to KB
                     val kb=bytes/1024
                     val mb=kb/1024
                     if(mb>=1)
@@ -64,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener{e->
-//                    failed to get metadata
+//                  Failed to get metadata
                     Log.d(TAG,"loadPdfSize:Failed to get metadata due to ${e.message}")
                 }
 
@@ -87,13 +84,13 @@ class MainActivity : AppCompatActivity() {
             pagesTv: TextView?
         ){
             val TAG="PDF_THUMBNAIL_TAG"
-//            using url we can get file and its metadata from firebase storage
+//          Using url we can get file and its metadata from firebase storage
             val ref=FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             ref.getBytes(MaxSize.MAX_BYTES_PDF)
                 .addOnSuccessListener {bytes->
                     Log.d(TAG,"loadPdfFromUrlSinglePage:Size Bytes $bytes")
 
-//                    Set to PDFView
+//                  Set to PDFView
                     pdfView.fromBytes(bytes)
                         .pages(0)  //show first page only
                         .spacing(0)
@@ -109,10 +106,10 @@ class MainActivity : AppCompatActivity() {
                         }
                         .onLoad{nbPages->
                             Log.d(TAG,"loadPdfUrlFromSinglePage:Pages:$nbPages")
-//                            pdf loaded ,we can set page count,pdf thumbnails
+//                          Pdf loaded ,we can set page count,pdf thumbnails
                             progressBar.visibility=View.INVISIBLE
 
-//                            if pagesTv param is not null then set page numbers
+//                          If pagesTv param is not null then set page numbers
                             if(pagesTv !=null)
                             {
                                 pagesTv.text="$nbPages"
@@ -121,13 +118,13 @@ class MainActivity : AppCompatActivity() {
                         .load()
                 }
                 .addOnFailureListener{e->
-//                    failed to get metadata
+//                  Failed to get metadata
                     Log.d(TAG,"loadPdfSize:Failed to get metadata due to ${e.message}")
                 }
         }
         fun loadCategory(categoryId: String,categoryTv: TextView)
         {
-//            load category using category id from firebase
+//          Load category using category id from firebase
             val ref= FirebaseDatabase.getInstance().getReference("Categories")
             ref.child(categoryId)
                 .addListenerForSingleValueEvent(object: ValueEventListener {
@@ -191,46 +188,16 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        fun incrementPdfViewsCount(bookId:String)
-        {
-//            get current book views count
-            val ref= FirebaseDatabase.getInstance().getReference("Books")
-            ref.child(bookId)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-//                        get views count
-                        var viewsCount="${snapshot.child("viewsCount").value}"
-                        if(viewsCount==""|| viewsCount=="null")
-                        {
-                            viewsCount="0"
-                        }
-//                        increment views count
-                        val newViewsCount=viewsCount.toLong()+1
-//                        setup data to update in db
-                        val hashMap=HashMap<String,Any>()
-                        hashMap["viewsCount"]=newViewsCount
-//                        set to db
-                        val dbRef= FirebaseDatabase.getInstance().getReference("Books")
-                        dbRef.child(bookId)
-                            .updateChildren(hashMap)
-
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-        }
-
         public fun removeFromFav(context: Context, bookId: String){
             val TAG ="REMOVE_FAV_TAG"
             Log.d(TAG,"removeFromFav:Removing From Fav..")
             val firebaseAuth= FirebaseAuth.getInstance()
             val ref= FirebaseDatabase.getInstance().getReference("Users")
-            ref.child(firebaseAuth.uid!!).child("Favourites").child(bookId)
+            ref.child(firebaseAuth.uid!!).child("Bookmarks").child(bookId)
                 .removeValue()
                 .addOnSuccessListener {
                     Log.d(TAG,"removeFromFavorite: Removed From fav")
-                    Toast.makeText(context,"Removed from Favourite",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"Removed from Bookmark",Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
                     Log.d(TAG,"removeFromFavourite: Failed to remove from fav due to ${it.message}")
@@ -241,78 +208,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-    /*private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
-
-private lateinit var progressBar:ProgressBar
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        progressBar=findViewById(R.id.progressBar)
-
-        val btnSHow=findViewById<Button>(R.id.btnShow)
-        btnSHow.setOnClickListener {
-
-            val intent=Intent(this,PdfView::class.java)
-            startActivity(intent)
-        }
-        activityResultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                // The user selected a PDF file.
-                val pdfUri = result.data?.data
-                if (pdfUri != null) {
-                    uploadPDFToFirebase(pdfUri)
-                }
-            }
-        }
-        val button = findViewById<Button>(R.id.upload)
-        button.setOnClickListener {
-            choosePDFFile()
-        }
-
-
-    }
-
-    private fun choosePDFFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "application/pdf"
-        activityResultLauncher.launch(intent)
-    }
-
-    private fun uploadPDFToFirebase(pdfUri: Uri) {
-        progressBar.visibility = View.VISIBLE
-        val storageRef = FirebaseStorage.getInstance().getReference("pdfs")
-        val originalFileName = getOriginalFileName(pdfUri)
-        val pdfRef = storageRef.child(originalFileName)
-
-        pdfRef.putFile(pdfUri).addOnProgressListener{taskSnapshot ->
-
-            val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
-            Log.d("UPLOAD_PROGRESS", "Progress: $progress")
-            progressBar.progress = progress
-        }.addOnSuccessListener {
-            progressBar.visibility = View.GONE
-            Toast.makeText(this, "Uploade successfully", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            progressBar.visibility = View.GONE
-            Toast.makeText(this, "Failed to upload", Toast.LENGTH_SHORT).show()
-        }
-    }
-    @SuppressLint("Range")
-    private fun getOriginalFileName(uri: Uri): String {
-        val contentResolver = contentResolver
-        val cursor = contentResolver.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val displayName = it.getString(it.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME))
-                if (displayName != null) {
-                    return displayName
-                }
-            }
-        }
-        // If the display name is not available, use a default name
-        return "file.pdf"
-    }
-
-}*/

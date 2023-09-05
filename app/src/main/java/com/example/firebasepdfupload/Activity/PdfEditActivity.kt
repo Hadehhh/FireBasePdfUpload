@@ -91,7 +91,6 @@ class PdfEditActivity : AppCompatActivity() {
                             }
                         })
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
@@ -106,15 +105,15 @@ class PdfEditActivity : AppCompatActivity() {
 //        validate data
         if(title.isEmpty())
         {
-            Toast.makeText(this,"Enter title", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Masukkan judul", Toast.LENGTH_SHORT).show()
         }
         else if(description.isEmpty())
         {
-            Toast.makeText(this,"Enter description", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Masukkan deskripsi", Toast.LENGTH_SHORT).show()
         }
         else if(selectedCategoryId.isEmpty())
         {
-            Toast.makeText(this,"Pick Category", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Pilih Kategori", Toast.LENGTH_SHORT).show()
         }
         else
         {
@@ -124,7 +123,7 @@ class PdfEditActivity : AppCompatActivity() {
 
     private fun updatePdf() {
         Log.d(TAG,"updatePdf:Starting updating pdf info..")
-        showProgressDialog("Updating Pdf info..")
+        showProgressDialog("Memperbarui Pdf info..")
 //        setup data to update to db, spellings of keys must be same as in firebase
         val hashMap=HashMap<String,Any>()
         hashMap["title"]= title
@@ -137,8 +136,8 @@ class PdfEditActivity : AppCompatActivity() {
             .updateChildren(hashMap)
             .addOnSuccessListener {
                 hideProgressDialog()
-                Log.d(TAG,"updatePdf: Updated successfully..")
-                Toast.makeText(this,"Updated successfully...", Toast.LENGTH_SHORT).show()
+                Log.d(TAG,"updatePdf: Berhasil diperbarui..")
+                Toast.makeText(this,"Berhasil diperbarui...", Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener{e->
@@ -161,7 +160,7 @@ class PdfEditActivity : AppCompatActivity() {
         }
 //        alert dialog
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("Choose Category")
+        builder.setTitle("Pilih Kategori")
             .setItems(categoriesArray){ _, position->
 //                handle click ,save clicked category id and title
                 selectedCategoryId=categoryIdArrayList[position]
@@ -170,8 +169,6 @@ class PdfEditActivity : AppCompatActivity() {
                 binding.pdfCatTv.text=selectedCategoryTitle
 
             }.show()
-
-
     }
 
     private fun loadCategories() {
@@ -195,19 +192,11 @@ class PdfEditActivity : AppCompatActivity() {
 
                     Log.d(TAG,"OnDataChange:Category ID $id")
                     Log.d(TAG,"onDataChange:Category  $category")
-
-
                 }
-
-
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
-
     }
 
     private fun showProgressDialog(text: String) {

@@ -101,7 +101,7 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
         ref.child(id)
             .removeValue()
             .addOnSuccessListener {
-                Toast.makeText(context,"Deleted..", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Berhasil dihapus..", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
                 Toast.makeText(context,"Unable to delete due to ${it.message}", Toast.LENGTH_SHORT).show()

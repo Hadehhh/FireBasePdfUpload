@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -16,8 +14,6 @@ import com.example.firebasepdfupload.Model.ModelCategory
 import com.example.firebasepdfupload.PdfFragment
 import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityHomeUserBinding
-import com.google.android.material.navigation.NavigationBarMenu
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -97,25 +93,20 @@ class HomeUser : AppCompatActivity() {
     private fun setUpWithViewPagerAdapter(viewPager: ViewPager){
         viewPagerAdapter= ViewPagerAdapter(supportFragmentManager,
             FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,this)
-//        init list
+
         categoryArrayList= ArrayList()
-//        load categories from db
+//      Load categories from db
         val ref= FirebaseDatabase.getInstance().getReference("Categories")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-//                    clear list
+//              Clear list
                 categoryArrayList.clear()
-//                    load some static categories ex: all,most viewed , most downloaded
-//                    add data to models
-                val modelAll= ModelCategory("01","All",1,"")
-                val modelMostViewed= ModelCategory("01","Most Viewed",1,"")
-                val modelMostDownload= ModelCategory("01","Most Downloaded",1,"")
 
-//                    add to list
+                val modelAll= ModelCategory("01","All",1,"")
+
                 categoryArrayList.add(modelAll)
-                categoryArrayList.add(modelMostViewed)
-                categoryArrayList.add(modelMostDownload)
-//                    add to ViewPagerAdapter
+
+//              Menambahkan ke ViewPagerAdapter
 
                 viewPagerAdapter.addFragment(
                     PdfFragment.newInstance(
@@ -125,32 +116,14 @@ class HomeUser : AppCompatActivity() {
                     ),modelAll.category
                 )
 
-                viewPagerAdapter.addFragment(
-                    PdfFragment.newInstance(
-                        "${modelMostViewed.id}",
-                        "${modelMostViewed.category}",
-                        "${modelMostViewed.uid}"
-                    ),modelMostViewed.category
-                )
-
-                viewPagerAdapter.addFragment(
-                    PdfFragment.newInstance(
-                        "${modelMostDownload.id}",
-                        "${modelMostDownload.category}",
-                        "${modelMostDownload.uid}"
-                    ),modelMostDownload.category
-                )
-
-//                    refresh list
-
                 viewPagerAdapter.notifyDataSetChanged()
-//                    now load from firebase db
+//              Load from firebase db
                 for( i in snapshot.children){
-//                        get data in model
+//                  Get data in model
                     val model = i.getValue(ModelCategory::class.java)
-//                        add to list
+//                  Add to list
                     categoryArrayList.add(model!!)
-//                        add to viewPagerAdapter
+//                  Add to viewPagerAdapter
                     viewPagerAdapter.addFragment(
                         PdfFragment.newInstance(
                             "${model.id}",
@@ -159,7 +132,6 @@ class HomeUser : AppCompatActivity() {
                         ),model.category
 
                     )
-//                        refresh List
                     viewPagerAdapter.notifyDataSetChanged()
                 }
             }
@@ -167,14 +139,14 @@ class HomeUser : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
-//        setup adapter to viewPager
+//      Setup adapter to viewPager
         viewPager.adapter=viewPagerAdapter
     }
     class ViewPagerAdapter(fm: FragmentManager, behavior: Int, context: Context):
         FragmentPagerAdapter(fm,behavior){
-        //        holds list of fragments that is new instances of same fragment for each category
+        //Holds list of fragments that is new instances of same fragment for each category
         private val fragmentList:ArrayList<PdfFragment> = ArrayList()
-        //        list of titles of categories ,for tabs
+        //List of titles of categories ,for tabs
         private val fragmentTitleList:ArrayList<String> = ArrayList()
         private   val context: Context
         init {
@@ -200,49 +172,21 @@ class HomeUser : AppCompatActivity() {
         }
 
     }
-    /*@SuppressLint("SetTextI18n")
-
-//    this activity can be opened with or without login ,so hide logout and profile btn
-
-    private fun checkUser()
-    {
-        val firebaseUser=firebaseAuth.currentUser
-        if(firebaseUser==null)
-        {
-//            not logged in  user can stay in user dashboard page  without login to
-            binding.subTitleTv.text="Not Logged In"
-//            hide profile and logout btn
-            binding.profileBtn.visibility= View.GONE
-            binding.powerImg.visibility=View.GONE
-
-
-        }
-        else{
-//            logged in and show user info
-            val email=firebaseUser.email
-            binding.subTitleTv.text=email
-
-            binding.profileBtn.visibility= View.VISIBLE
-            binding.powerImg.visibility=View.VISIBLE
-
-
-        }
-    }*/
     private fun loadUserInfo() {
 
-//        db ref to load user info
+//      db ref to load user info
         val ref=FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!)
             .addValueEventListener(object:ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-//                    get user info
+//                  Get user info
                     val name="${snapshot.child("name").value}"
                     val profilePic="${snapshot.child("profileImage").value}"
 
-//                    set data
+//                  Set data
                     binding.nameTv.text=name
 
-//                    set image
+//                  Set image
                     try{
                         Glide.with(this@HomeUser)
                             .load(profilePic)
@@ -251,15 +195,10 @@ class HomeUser : AppCompatActivity() {
 
                     }
                     catch (e:Exception){
-
-
                     }
-
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
-
     }
 }

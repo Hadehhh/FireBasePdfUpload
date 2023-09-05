@@ -9,9 +9,7 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.WindowCompat
@@ -36,8 +34,6 @@ class RegisterActivity : AppCompatActivity() {
     var etEmail: EditText?=null
     var etPassword: EditText?=null
     var etConfPassword: EditText?=null
-    var cbTermConditions: CheckBox?=null
-    var backbtn: ImageView?=null
     var isAllEditTextCheck=false
     var name=""
     var email=""
@@ -58,13 +54,6 @@ class RegisterActivity : AppCompatActivity() {
         etPassword=binding.passwordET
         etConfPassword=binding.confirmPasswordET
         bRegister=binding.btnSignUp
-//        backbtn=binding.backImage
-
-//        backbtn!!.setOnClickListener{
-//            val intent= Intent(this@RegisterActivity, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
 
         bRegister?.setOnClickListener { registerUser() }
 
@@ -84,19 +73,18 @@ class RegisterActivity : AppCompatActivity() {
         name=etFirstName?.text.toString().trim()+" " +etLastName?.text.toString().trim()
         isAllEditTextCheck=checkAllEditText()
         if(isAllEditTextCheck){
-//            showProgressDialog(resources.getString(R.string.please_wait))
             auth.createUserWithEmailAndPassword(email,password)
                 .addOnSuccessListener {
                     updateUserInfo()
                 }
                 .addOnFailureListener{
                     hideProgressDialog()
-                    Toast.makeText(this,"Failed creating account", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Gagal membuat akun", Toast.LENGTH_SHORT).show()
                 }
         }
         else
         {
-            Toast.makeText(this,"Registration is not successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -107,12 +95,12 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkAllEditText(): Boolean {
         if(etFirstName?.length()  ==0)
         {
-            etFirstName?.error = "First Name cannot be blank"
+            etFirstName?.error = "Nama depan harus di-isi"
             return false;
         }
         if(etLastName?.length()==0)
         {
-            etLastName?.error="Last Name cannot be blank"
+            etLastName?.error="Nama belakang harus di-isi"
             return false;
         }
         if(etEmail?.length()==0)
@@ -122,52 +110,28 @@ class RegisterActivity : AppCompatActivity() {
         }
         if(!isEmail(etEmail?.editableText))
         {
-            etEmail?.error="The email address is invalid"
+            etEmail?.error="Alamat email tidak valid"
             return false
         }
         if (etPassword!!.length() == 0) {
-            etPassword!!.error = "Password cannot be blank"
+            etPassword!!.error = "Kata sandi tidak boleh kosong"
             return false
         } else if (etPassword!!.length() < 8) {
-            etPassword!!.error = "Password must be of minimum 8 characters"
+            etPassword!!.error = "Kata sandi minimal 8 karakter"
             return false
         }
         if(etConfPassword!!.length()==0)
         {
-            etConfPassword!!.error="Confirm your password first."
+            etConfPassword!!.error="Konfirmasi kata sandi anda"
             return false
         }
         if(!etConfPassword?.equals(etConfPassword)!!)
         {
-            etConfPassword!!.error="The passwords do not match."
+            etConfPassword!!.error="Kata sandi tidak cocok"
             return false
         }
-//        if (cbTermConditions?.isChecked == true) {
-//            (cbTermConditions!!.text.toString() + " ")
-//        } else {
-//            (cbTermConditions!!.text.toString() + "UnChecked")
-//            Toast.makeText(this@RegisterActivity,"Check the terms and conditions", Toast.LENGTH_SHORT).show()
-//            return false
-//        }
         return true
-
     }
-    private fun showProgressDialog(text: String) {
-        mProgressDialog = Dialog(this)
-
-        /*Set the screen content from a layout resource.
-        The resource will be inflated, adding all top-level views to the screen.*/
-        mProgressDialog.setContentView(R.layout.progress_indicator)
-
-//        mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
-
-        mProgressDialog.setCancelable(false)
-        mProgressDialog.setCanceledOnTouchOutside(false)
-
-        //Start the dialog and display it on screen.
-        mProgressDialog.show()
-    }
-
     private fun hideProgressDialog() {
         mProgressDialog.dismiss()
     }
@@ -190,7 +154,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
 //                user info saved dashboard open
                 hideProgressDialog()
-                Toast.makeText(this,"Account Created Successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Akun berhasil dibuat", Toast.LENGTH_SHORT).show()
 //                val intent= Intent(this@RegisterActivity, DashBoardUserActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -199,7 +163,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener{
 //                failed adding data to db
                 hideProgressDialog()
-                Toast.makeText(this,"Failed saving Users info ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Gagal menyimpan user info", Toast.LENGTH_SHORT).show()
             }
 
     }

@@ -1,29 +1,17 @@
 package com.example.firebasepdfupload.Activity
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasepdfupload.MaxSize
-import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityPdfViewBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-import java.io.File
 
 class PdfView : AppCompatActivity() {
     private lateinit var binding:ActivityPdfViewBinding

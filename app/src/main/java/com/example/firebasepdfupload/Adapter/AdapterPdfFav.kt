@@ -66,23 +66,19 @@ class AdapterPdfFav  : RecyclerView.Adapter<AdapterPdfFav.HolderPdfFav>{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val categoryId="${snapshot.child("categoryId").value}"
                     val description="${snapshot.child("description").value}"
-                    val downloadsCount="${snapshot.child("downloadsCount").value}"
                     val timestamp="${snapshot.child("timestamp").value}"
                     val title="${snapshot.child("title").value}"
                     val uid="${snapshot.child("uid").value}"
                     val url="${snapshot.child("url").value}"
-                    val viewsCount="${snapshot.child("viewsCount").value}"
 
 //                        set data to model
-                    model.isFavourite=true
+                    model.isBookmark=true
                     model.title=title
                     model.description=description
                     model.categoryId=categoryId
                     model.timestamp=timestamp.toLong()
                     model.uid=uid
                     model.url=url
-                    model.viewsCount=viewsCount.toLong()
-                    model.downloadCount=downloadsCount.toLong()
 
                     val formattedDate=MainActivity.formatTimeStamp(timestamp.toLong())
 

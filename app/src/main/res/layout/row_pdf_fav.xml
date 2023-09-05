@@ -83,11 +83,11 @@
             android:text="tanggal"
             android:textAlignment="center"/>
 
-
         <ImageButton
             android:id="@+id/favorite_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/baseline_bookmark_24"
             android:padding="5dp"

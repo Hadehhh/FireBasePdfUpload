@@ -57,22 +57,22 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 //        get data ,set data ,handle click
 
 //        get data
-        val model=pdfArrayList[position]
-        val pdfId=model.id
-        val categoryId=model.categoryId
-        val title=model.title
-        val description=model.description
-        val uid=model.uid
-        val url=model.url
-        val timestamp=model.timestamp
+        val model = pdfArrayList[position]
+        val pdfId = model.id
+        val categoryId = model.categoryId
+        val title = model.title
+        val description = model.description
+        val uid = model.uid
+        val url = model.url
+        val timestamp = model.timestamp
 
 //        convert time
-        val date= MainActivity.formatTimeStamp(timestamp)
+        val date = MainActivity.formatTimeStamp(timestamp)
 
 //        set data
-        holder.titleTv.text=title
-        holder.descriptionTv.text=description
-        holder.dateTv.text=date
+        holder.titleTv.text = title
+        holder.descriptionTv.text = description
+        holder.dateTv.text = date
 
         MainActivity.loadPdfFromUrlSinglePage(url, title, holder.pdfView, holder.progressBar, null)
 //        no need number of pages so pass null
@@ -81,8 +81,8 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 
         holder.itemView.setOnClickListener {
 //            pass pdfId in intent that will be used to get pdf info
-            val intent= Intent(context, PdfDetailsActivity::class.java)
-            intent.putExtra("pdfId",pdfId)
+            val intent = Intent(context, PdfDetailsActivity::class.java)
+            intent.putExtra("pdfId", pdfId)
             context.startActivity(intent)
         }
     }
@@ -97,9 +97,5 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
         var categoryTv=binding.categoryTv
         var sizeTv=binding.sizeTv
         var dateTv=binding.dateTv
-
-
     }
-
-
 }

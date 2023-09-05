@@ -102,11 +102,11 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
 
 //        option to show in dialog
 
-        val options= arrayOf("Edit","Delete")
+        val options= arrayOf("Ubah","Hapus")
 
 //        alert dialog
         val builder= AlertDialog.Builder(context)
-        builder.setTitle("Choose Options")
+        builder.setTitle("Pilih Opsi")
             .setItems(options){ _, position->
 //                handle item click
                 if(position==0)
@@ -147,6 +147,4 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
         val dateTv=binding.dateTv
         val moreBtn=binding.moreBtn
     }
-
-
 }

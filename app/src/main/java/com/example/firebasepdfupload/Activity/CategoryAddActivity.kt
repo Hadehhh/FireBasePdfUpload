@@ -51,35 +51,30 @@ class CategoryAddActivity : AppCompatActivity() {
     }
 
     private fun addCategoryFirebase() {
-//        show dialog
+//      Menampilkan dialog
         showProgressDialog("please wait..")
-//        get timestamp
-        val timestamp=System.currentTimeMillis()
-//        setup data to add in firebase db
-        val hashMap=HashMap<String,Any>()
-        hashMap["id"]="$timestamp"
-        hashMap["category"]=category
-        hashMap["timestamp"]=timestamp
-        hashMap["uid"]="${firebaseAuth.uid}"
+        val timestamp = System.currentTimeMillis()
+        val hashMap = HashMap<String, Any>()
+        hashMap["id"] = "$timestamp"
+        hashMap["category"] = category
+        hashMap["timestamp"] = timestamp
+        hashMap["uid"] = "${firebaseAuth.uid}"
 
-//        add to firebase db : database Root>Categories>CategoryId> category info
-        val ref= FirebaseDatabase.getInstance().getReference("Categories")
+//      Add to firebase db : database Root>Categories>CategoryId> category info
+        val ref = FirebaseDatabase.getInstance().getReference("Categories")
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
                 hideProgressDialog()
-                Toast.makeText(this,"Added Successfully..", Toast.LENGTH_SHORT).show()
-//              added successfully
+                Toast.makeText(this, "Berhasil Ditambahkan..", Toast.LENGTH_SHORT).show()
+//              Added successfully
             }
-            .addOnFailureListener {e->
+            .addOnFailureListener { e ->
                 hideProgressDialog()
-//                failure to add
-                Toast.makeText(this,"Failed to add due to ${e.message}", Toast.LENGTH_SHORT).show()
+//              Failure to add
+                Toast.makeText(this, "Failed to add due to ${e.message}", Toast.LENGTH_SHORT).show()
 
             }
-
-
-
     }
 
     private fun showProgressDialog(text: String) {

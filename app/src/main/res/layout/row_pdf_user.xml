@@ -50,7 +50,6 @@
             android:id="@+id/title_Tv"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_toEndOf="@id/pdfRl"
-            android:layout_toStartOf="@+id/moreBtn"
             android:layout_below="@id/category_Tv"
             android:maxLines="1"
             android:text="Judul"
@@ -75,7 +74,7 @@
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/pdfRl"
             android:maxLines="1"
-            android:text="Ukuran File"/>
+            android:text="- MB"/>
 
         <TextView
             android:id="@+id/date_tv"
@@ -84,18 +83,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:maxLines="1"
-            android:text="Tanggal upload"
+            android:text="DD/MM/YYYY"
             android:textAlignment="center"/>
-
-        <ImageButton
-            android:id="@+id/moreBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/baseline_more_vert_24"
-            android:padding="5dp"
-            android:background="@android:color/transparent"/>
-
 
     </RelativeLayout>
 

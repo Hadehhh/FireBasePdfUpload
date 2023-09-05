@@ -9,9 +9,7 @@ class ModelPdf {
     var categoryId: String=""
     var url:String=""
     var timestamp:Long=0
-    var viewsCount:Long=0
-    var downloadCount:Long=0
-    var isFavourite=false
+    var isBookmark=false
 
     //    empty constructor (required by firebase)
     constructor()
@@ -23,9 +21,7 @@ class ModelPdf {
         categoryId: String,
         url: String,
         timestamp: Long,
-        viewsCount: Long,
-        downloadCount: Long,
-        isFavourite:Boolean
+        isBookmark:Boolean
     ) {
         this.uid = uid
         this.id = id
@@ -34,9 +30,7 @@ class ModelPdf {
         this.categoryId = categoryId
         this.url = url
         this.timestamp = timestamp
-        this.viewsCount = viewsCount
-        this.downloadCount = downloadCount
-        this.isFavourite=isFavourite
+        this.isBookmark=isBookmark
     }
 //    parametrized constructor
 

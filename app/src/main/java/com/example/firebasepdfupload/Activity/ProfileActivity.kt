@@ -1,12 +1,10 @@
 package com.example.firebasepdfupload.Activity
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.firebasepdfupload.Adapter.AdapterPdfFav
@@ -26,7 +24,6 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var pdfsArrayList: ArrayList<ModelPdf>
     private lateinit var adapterPdfFav: AdapterPdfFav
-    private lateinit var mProgressDialog: Dialog
 
     //    firebase current user
     private lateinit var firebaseUser: FirebaseUser
@@ -39,23 +36,17 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 //        reset to default values
-//        binding.accountTypeTv.text="N/A"
         binding.memberDateTv.text="N/A"
         binding.favouritePdfscountTv.text="N/A"
-//        binding.accountStatustv.text="N/A"
 
         firebaseAuth= FirebaseAuth.getInstance()
         firebaseUser=firebaseAuth.currentUser!!
         loadUserInfo()
         loadFavPdfs()
 
-//        binding
-//        binding.backBtn.setOnClickListener {
-//            onBackPressed()
-//        }
         binding.btnLogout.setOnClickListener{
             firebaseAuth.signOut()
-            Toast.makeText(this,"Logout Successfully",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Berhasil Keluar",Toast.LENGTH_SHORT).show()
             val intent=Intent(this@ProfileActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
@@ -64,18 +55,6 @@ class ProfileActivity : AppCompatActivity() {
             val intent= Intent(this,ProfileEditActivity::class.java)
             startActivity(intent)
         }
-
-//        handle click ,verify user if not
-//        binding.accountStatustv.setOnClickListener {
-//            if(firebaseUser.isEmailVerified)
-//            {
-//                Toast.makeText(this,"Already verified..", Toast.LENGTH_SHORT).show()
-//            }
-//            else
-//            {
-//                emailVerificationDialog()
-//            }
-//        }
 
         binding.bottomNavigation.menu.findItem(R.id.account).isChecked = true
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -128,47 +107,9 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun emailVerificationDialog() {
-        val builder= AlertDialog.Builder(this)
-        builder.setTitle("Verify Email")
-            .setMessage("Are you sure you want to send email verification to your email ${firebaseUser.email}")
-            .setPositiveButton("SEND"){d,e->
-                sendEmailVerification()
-            }
-            .setNegativeButton("CANCEL"){d,e->
-                d.dismiss()
-            }.show()
-    }
-
-    private fun sendEmailVerification() {
-        showProgressDialog("Sending email verification instructions to email ${firebaseUser.email}")
-        firebaseUser.sendEmailVerification()
-            .addOnSuccessListener {
-                hideProgressDialog()
-                Toast.makeText(this,"Instructions sent! check your email ${firebaseUser.email}",
-                    Toast.LENGTH_SHORT).show()
-
-            }
-            .addOnFailureListener {
-                hideProgressDialog()
-                Toast.makeText(this,"Failed to send ${it.message}", Toast.LENGTH_SHORT).show()
-            }
-
-    }
-
     @SuppressLint("SetTextI18n")
     private fun loadUserInfo() {
 
-//        check if user is verified or not
-
-//        if(firebaseUser.isEmailVerified)
-//        {
-//            binding.accountStatustv.text="Verified"
-//        }
-//        else
-//        {
-//            binding.accountStatustv.text=" Not Verified"
-//        }
 //        db ref to load user info
         val ref= FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!)
@@ -196,25 +137,19 @@ class ProfileActivity : AppCompatActivity() {
                             .load(profilePic)
                             .placeholder(R.drawable.logo)
                             .into(binding.profileImage)
-
                     }
                     catch (e:Exception){
-
-
                     }
-
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
-
     }
     private fun loadFavPdfs(){
 //        init arraylist
         pdfsArrayList=ArrayList()
         val ref= FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(firebaseAuth.uid!!).child("Favourites")
+        ref.child(firebaseAuth.uid!!).child("Bookmarks")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 //                    clear arraylist before adding
@@ -238,24 +173,5 @@ class ProfileActivity : AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
-    }
-    private fun showProgressDialog(text: String) {
-        mProgressDialog = Dialog(this)
-
-        /*Set the screen content from a layout resource.
-        The resource will be inflated, adding all top-level views to the screen.*/
-        mProgressDialog.setContentView(R.layout.progress_indicator)
-
-        mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
-
-        mProgressDialog.setCancelable(false)
-        mProgressDialog.setCanceledOnTouchOutside(false)
-
-        //Start the dialog and display it on screen.
-        mProgressDialog.show()
-    }
-
-    private fun hideProgressDialog() {
-        mProgressDialog.dismiss()
     }
 }

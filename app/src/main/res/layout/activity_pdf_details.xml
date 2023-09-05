@@ -19,43 +19,41 @@
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
             android:layout_centerVertical="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book Details"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/poppins_bold"
+            android:text="Rincian Pdf"
+            android:textColor="@color/blueText"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_above="@id/bookOptionsLL"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
         <LinearLayout
+            android:layout_below="@id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <RelativeLayout
                     android:id="@+id/pdfRlv"
-                    android:layout_width="110dp"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginEnd="5dp">
+                    android:layout_marginHorizontal="16dp">
 
                     <com.github.barteksc.pdfviewer.PDFView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/pdfViewer"/>
                     <ProgressBar
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/progress_bar"
                         />
                 </RelativeLayout>
@@ -64,22 +62,26 @@
                     android:id="@+id/titleTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:layout_toEndOf="@+id/pdfRlv"
-                    android:text="Book Title"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:text="Judul"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/titleTv"
-                    android:layout_toEndOf="@id/pdfRlv">
+                    android:layout_marginTop="16dp">
                     <TableRow>
                         <TextView
                             android:id="@+id/category_labelTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="Category"
+                            android:text="Kategori"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
 
                         <TextView
@@ -89,6 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
 
 
@@ -101,7 +104,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="Date"
+                            android:text="Tanggal"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
 
                         <TextView
@@ -111,6 +115,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
                     </TableRow>
 
@@ -121,7 +126,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="Size"
+                            android:text="Ukuran Berkas"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
 
                         <TextView
@@ -131,48 +137,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
                     </TableRow>
 
-                    <TableRow
-                        android:layout_marginTop="5dp">
-                        <TextView
-                            android:id="@+id/Views_labelTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="Views"
-                            android:layout_marginEnd="5dp"/>
 
-                        <TextView
-                            android:id="@+id/viewsTv"
-                            android:layout_weight="1"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_marginTop="5dp">
-                        <TextView
-                            android:id="@+id/download_labelTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="download"
-                            android:layout_marginEnd="5dp"/>
-
-                        <TextView
-                            android:id="@+id/downloadTv"
-                            android:layout_weight="1"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:layout_marginEnd="5dp"/>
-                    </TableRow>
 
                     <TableRow
                         android:layout_marginTop="5dp">
@@ -181,7 +150,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="pages"
+                            android:text="Halaman"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
 
                         <TextView
@@ -191,86 +161,72 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="-"
+                            android:textSize="15sp"
                             android:layout_marginEnd="5dp"/>
                     </TableRow>
 
 
                 </TableLayout>
-            </RelativeLayout>
 
             <TextView
                 android:id="@+id/descriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="deskripsi"
+                android:text="Deskripsi"
+                android:textSize="15sp"
                 android:textColor="@color/black"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="5dp"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comments"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"/>
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/addCommentBtn"
-                    android:layout_alignParentEnd="true"
-                    android:padding="10dp"
-                    android:background="@android:color/transparent"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/commentsRv"
-                    android:layout_width="match_parent"
-                    android:layout_below="@id/addCommentBtn"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    />
-            </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bookOptionsLL"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:id="@+id/readPdfBtn"
-            android:layout_height="wrap_content"
-            android:text="baca"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:layout_weight="1"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/download_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="download"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:layout_weight="1"
-            />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fav_btn"
-            android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/bookOptionsLL"
+        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/readPdfBtn"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="favorite"
-            android:textSize="10sp"
-            android:textColor="@color/white"
             android:layout_weight="1"
-            />
+            android:backgroundTint="#ABEDFF"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Baca"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/baseline_menu_book_24" />
+
+        <Button
+            android:id="@+id/download_btn"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Unduh"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/baseline_download_24" />
+
+        <Button
+            android:id="@+id/fav_btn"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#B9C3FF"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Tambah ke Markah"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/baseline_bookmark_border_24" />
+        />
 
     </LinearLayout>
 

@@ -18,7 +18,7 @@ class BookmarkActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookmarkBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var booksArrayList: ArrayList<ModelPdf>
+    private lateinit var pdfsArrayList: ArrayList<ModelPdf>
     private lateinit var adapterPdfFav: AdapterPdfFav
 
     //    firebase current user
@@ -32,11 +32,6 @@ class BookmarkActivity : AppCompatActivity() {
         firebaseUser = firebaseAuth.currentUser!!
 
         loadBookmark()
-
-//        binding
-//        binding.backBtn.setOnClickListener {
-//            onBackPressed()
-//        }
 
         binding.bottomNavigation.menu.findItem(R.id.bookmark).setChecked(true)
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -87,25 +82,21 @@ class BookmarkActivity : AppCompatActivity() {
     }
 private fun loadBookmark(){
 //        init arraylist
-        booksArrayList=ArrayList()
+        pdfsArrayList=ArrayList()
         val ref= FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(firebaseAuth.uid!!).child("Favourites")
+        ref.child(firebaseAuth.uid!!).child("Bookmarks")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-//                    clear arraylist before adding
-                    booksArrayList.clear()
+                    pdfsArrayList.clear()
                     for(ds in snapshot.children){
-//                        get only id of the books
-//                        rest of info will load in adapter class
-                        val bookId="${ds.child("bookId").value}"
-//                        set to model
+                        val pdfId="${ds.child("pdfId").value}"
                         val modelPdf= ModelPdf()
-                        modelPdf.id=bookId
+                        modelPdf.id=pdfId
 
-//                        add model to list
-                        booksArrayList.add(modelPdf)
+//                      Menambahkan model ke list
+                        pdfsArrayList.add(modelPdf)
                     }
-                    adapterPdfFav= AdapterPdfFav(this@BookmarkActivity,booksArrayList)
+                    adapterPdfFav= AdapterPdfFav(this@BookmarkActivity,pdfsArrayList)
                     binding.favRv.adapter=adapterPdfFav
                 }
 

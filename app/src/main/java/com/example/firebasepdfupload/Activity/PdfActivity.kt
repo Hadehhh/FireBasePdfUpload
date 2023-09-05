@@ -107,14 +107,8 @@ class PdfActivity : AppCompatActivity() {
         {
 //            data validated--> begin upload
             uploadPdfToStorage()
-
         }
-
-
-
-
     }
-
     private fun uploadPdfToStorage() {
         Log.d(TAG,"uploadPdfToStorage:Uploading to storage")
 

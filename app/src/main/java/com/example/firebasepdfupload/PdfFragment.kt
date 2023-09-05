@@ -64,67 +64,11 @@ class PdfFragment : Fragment {
 //            load all boo
             loadAllBooks()
         }
-        else if(category=="Most Viewed")
-        {
-//            load most viewed books
-            loadMostViewedDownloadBooks("viewsCount")
-        }
-        else if(category=="Most Downloaded")
-        {
-            loadMostViewedDownloadBooks("downloadsCount")
-        }
         else{
 //            load selected category books
             loadCategorizedBooks()
         }
-
-//        search
-//        binding.searchEt.addTextChangedListener{object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                try {
-//                    adapterPdfUser.filter.filter(s)
-//                }
-//                catch (e:Exception){
-//                    Log.d(TAG,"onTextChanged: SEARCH EXCEPTION:${e.message}")
-//                }
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                TODO("Not yet implemented")
-//            }
-//        }}
         return binding.root
-    }
-
-    private fun loadMostViewedDownloadBooks(orderBy: String) {
-        //        init list
-        pdfArrayList= ArrayList()
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
-        ref.orderByChild(orderBy).limitToLast(10)  // load most viewed or most downloaded books.   orderBy=""
-            .addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-//                clear list before starting adding data into it
-                    pdfArrayList.clear()
-                    for(i in snapshot.children){
-//                    get data
-                        val model=i.getValue(ModelPdf::class.java)
-//                    add to list
-                        pdfArrayList.add(model!!)
-                    }
-//                setup adapter
-                    adapterPdfUser= AdapterPdfUser(context!!,pdfArrayList)
-//                set adapter to recyclerView
-                    binding.pdfsRv.adapter=adapterPdfUser
-                }
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })
-
     }
 
     private fun loadAllBooks() {
@@ -174,9 +118,7 @@ class PdfFragment : Fragment {
                     binding.pdfsRv.adapter=adapterPdfUser
                 }
                 override fun onCancelled(error: DatabaseError) {
-
                 }
             })
-
     }
 }
