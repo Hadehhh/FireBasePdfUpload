@@ -4,9 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Toast
 import com.example.firebasepdfupload.Adapter.AdapterCategory
 import com.example.firebasepdfupload.Model.ModelCategory
 import com.example.firebasepdfupload.databinding.ActivityHomeAdminBinding
@@ -111,7 +108,6 @@ class HomeAdmin : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 }

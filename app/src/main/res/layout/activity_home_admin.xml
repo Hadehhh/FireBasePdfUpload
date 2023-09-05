@@ -70,7 +70,7 @@
             android:textAllCaps="false"
             style="@style/Widget.Material3.Button.TonalButton.Icon"
             app:icon="@drawable/categoryicon"
-            android:text="Tambahkan Kategori"
+            android:text="Tambah Kategori"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/poppins_bold"

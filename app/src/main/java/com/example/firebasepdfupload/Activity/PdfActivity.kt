@@ -89,19 +89,19 @@ class PdfActivity : AppCompatActivity() {
 //        validate data
         if(title.isEmpty())
         {
-            Toast.makeText(this,"Enter Title..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Judul harus di-isi..", Toast.LENGTH_SHORT).show()
         }
         else if(description.isEmpty())
         {
-            Toast.makeText(this,"Enter Description..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Deskripsi harus di-isi..", Toast.LENGTH_SHORT).show()
         }
         else if(category.isEmpty())
         {
-            Toast.makeText(this,"Enter Category..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Pilih Kategori..", Toast.LENGTH_SHORT).show()
         }
         else if(pdfUri==null)
         {
-            Toast.makeText(this,"Pick Pdf...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Pilih File...", Toast.LENGTH_SHORT).show()
         }
         else
         {
@@ -113,7 +113,7 @@ class PdfActivity : AppCompatActivity() {
         Log.d(TAG,"uploadPdfToStorage:Uploading to storage")
 
 //        show progress dialog
-        showProgressDialog("Uploading PDF..")
+        showProgressDialog("Mengunggah File..")
 //        timestamp
         val timestamp=System.currentTimeMillis()
 
@@ -145,7 +145,7 @@ class PdfActivity : AppCompatActivity() {
     private fun uploadPdfInfoToDb(uploadedPdfUrl: String, timestamp: Long) {
 //    Upload pdf info to firebase db
         Log.d(TAG,"UploadPdfInfoToDb:uploading to db")
-        showProgressDialog("Uploading Pdf info..")
+        showProgressDialog("Mengunggah pdf info..")
 
 //        uid of current user
         val uid= firebaseAuth.uid
@@ -159,8 +159,6 @@ class PdfActivity : AppCompatActivity() {
         hashMap["categoryId"]="$selectedCategoryId"
         hashMap["url"]="$uploadedPdfUrl"
         hashMap["timestamp"]=timestamp
-        hashMap["viewsCount"]=0
-        hashMap["downloadsCount"]=0
 
 //        db reference DB> Pdfs >pdfId >(PdfInfo)
         val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
@@ -169,7 +167,7 @@ class PdfActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d(TAG,"uploadedPdfInfoToDb:uploaded to db")
                 hideProgressDialog()
-                Toast.makeText(this,"Uploaded..", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Berhasil di-unggah..", Toast.LENGTH_SHORT).show()
                 pdfUri=null
 
             }
@@ -225,7 +223,7 @@ class PdfActivity : AppCompatActivity() {
 
 //        alert dialog
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("Pick Category")
+        builder.setTitle("Pilih Kategori")
             .setItems(categoriesArray){dialog,which->
 //                handle item click
 //                get clicked item
