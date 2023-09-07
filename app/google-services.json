@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "222435871839",
-    "firebase_url": "https://pdf-storage-ff371-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "pdf-storage-ff371",
-    "storage_bucket": "pdf-storage-ff371.appspot.com"
+    "project_number": "1073486139677",
+    "project_id": "pdf-storage-8c04b",
+    "storage_bucket": "pdf-storage-8c04b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:222435871839:android:d6256d999034fc0e8c9fea",
+        "mobilesdk_app_id": "1:1073486139677:android:4f59b750bbc5c9a6be91f4",
         "android_client_info": {
           "package_name": "com.example.firebasepdfupload"
         }
       },
       "oauth_client": [
         {
-          "client_id": "222435871839-mh36eqjm1397cmpnl9gag8cd884tlido.apps.googleusercontent.com",
+          "client_id": "1073486139677-r5pgmalht74b55lbnveb4ajjq1dpp65l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAvbvA7MuMNaqYcFK55gppU81ZfxsEjT4Q"
+          "current_key": "AIzaSyAGHwFdSvueRzA-pf4siMYaWMXFSPzkNC0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "222435871839-mh36eqjm1397cmpnl9gag8cd884tlido.apps.googleusercontent.com",
+              "client_id": "1073486139677-r5pgmalht74b55lbnveb4ajjq1dpp65l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

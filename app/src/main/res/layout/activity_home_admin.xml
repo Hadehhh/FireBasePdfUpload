@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Home Admin"
+            android:text="Beranda Admin"
             android:textColor="@color/blueText"
             android:textSize="30sp"
             android:textStyle="bold"

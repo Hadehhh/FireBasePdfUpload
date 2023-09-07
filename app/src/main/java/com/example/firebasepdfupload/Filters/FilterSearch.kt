@@ -60,7 +60,5 @@ class FilterSearch: Filter {
         adapterSearch.notifyDataSetChanged()
 
     }
-
 //    constructor
-
 }

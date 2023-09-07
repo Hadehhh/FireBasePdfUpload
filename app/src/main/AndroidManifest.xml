@@ -17,6 +17,9 @@
         android:theme="@style/Theme.FireBasePdfUpload"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.ProfileAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SearchActivity"
             android:exported="false" />
         <activity

@@ -105,7 +105,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         if(etEmail?.length()==0)
         {
-            etEmail?.error="Email ID cannot be blank"
+            etEmail?.error="Alamat Email harus di-isi"
             return false;
         }
         if(!isEmail(etEmail?.editableText))

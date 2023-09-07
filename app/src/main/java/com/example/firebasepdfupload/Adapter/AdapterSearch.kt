@@ -10,7 +10,6 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasepdfupload.Activity.MainActivity
 import com.example.firebasepdfupload.Activity.PdfDetailsActivity
-import com.example.firebasepdfupload.Filters.FilterPdfUser
 import com.example.firebasepdfupload.Filters.FilterSearch
 import com.example.firebasepdfupload.Model.ModelPdf
 import com.example.firebasepdfupload.databinding.RowSearchBinding
@@ -54,7 +53,7 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         {
             filter= FilterSearch(filterList,this)
         }
-        return filter as FilterPdfUser
+        return filter as FilterSearch
     }
 
     override fun onBindViewHolder(holder: HolderSearch, position: Int) {
@@ -78,15 +77,15 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         holder.descriptionTv.text=description
         holder.dateTv.text=date
 
+        MainActivity.loadCategory(categoryId, holder.categoryTv)
         MainActivity.loadPdfFromUrlSinglePage(url, title, holder.pdfView, holder.progressBar, null)
 //        no need number of pages so pass null
-        MainActivity.loadCategory(categoryId, holder.categoryTv)
         MainActivity.loadPdfSize(url, title, holder.sizeTv)
 
         holder.itemView.setOnClickListener {
 //            pass pdfId in intent that will be used to get pdf info
             val intent= Intent(context, PdfDetailsActivity::class.java)
-            intent.putExtra("Title",dataList[holder.adapterPosition].title)
+            intent.putExtra("pdfId",pdfId)
             context.startActivity(intent)
         }
     }
@@ -101,62 +100,5 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         var categoryTv=binding.tvCategory
         var sizeTv=binding.tvSize
         var dateTv=binding.tvDate
-
-
-    }
-    fun searchDataList(searchList: List<ModelPdf>){
-        dataList = searchList
-        notifyDataSetChanged()
     }
 }
-
-/*class AdapterSearch(private val context: Context, private var dataList: List<ModelPdf>) :
-    RecyclerView.Adapter<MyViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.row_search,parent,false)
-        return MyViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        Glide.with(context).load(dataList[position].dataImage).into(holder.recImage)
-        holder.recTitle.text = dataList[position].title
-//        holder.recDesc.text = dataList[position].dataDesc
-//        holder.recPriority.text = dataList[position].dataPriority
-
-        // to view detailed activity
-
-        holder.cvSearch.setOnClickListener {
-            val intent = Intent(context, PdfDetailsActivity::class.java)
-//            intent.putExtra("Image",dataList[holder.adapterPosition].dataImage)
-//            intent.putExtra("Description",dataList[holder.adapterPosition].dataDesc)
-            intent.putExtra("Title",dataList[holder.adapterPosition].title)
-//            intent.putExtra("Priority",dataList[holder.adapterPosition].dataPriority)
-            context.startActivity(intent)
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return dataList.size
-    }
-
-    fun searchDataList(searchList: List<ModelPdf>){
-        dataList = searchList
-        notifyDataSetChanged()
-    }
-}
-
-class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    //    var recImage: ImageView
-    var recTitle: TextView
-    //    var recDesc: TextView
-//    var recPriority: TextView
-    var cvSearch: CardView
-
-    init {
-//        recImage = itemView.findViewById(R.id.recImage)
-//        recDesc = itemView.findViewById(R.id.recDesc)
-        recTitle = itemView.findViewById(R.id.tvTitle)
-//        recPriority = itemView.findViewById(R.id.recPriority)
-        cvSearch = itemView.findViewById(R.id.cvSearch)
-    }
-}*/

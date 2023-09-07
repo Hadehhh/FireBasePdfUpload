@@ -57,12 +57,6 @@ class PdfActivity : AppCompatActivity() {
         }
 //        start uploading pdf
         binding.uploadButton.setOnClickListener {
-
-//            step1--> validate data
-//            step2--> upload pdf to firebase storage
-//            step3-->get Url of uploaded pdf
-//            step$-->Upload pdf into firebase db
-
             validateData()
         }
 //        handle go back btn

@@ -32,37 +32,6 @@ class HomeAdmin : AppCompatActivity() {
         firebaseAuth= FirebaseAuth.getInstance()
         loadCategories()
 
-//        search
-        /*binding.searchBar.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                called as and when user type anything
-                try{
-                    adapterCategory.filter.filter(s)
-                }
-                catch (e:Exception){
-
-
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-
-        binding.powerImg.setOnClickListener{
-            firebaseAuth.signOut()
-            Toast.makeText(this,"Logout Successfully", Toast.LENGTH_SHORT).show()
-            checkUser()
-            val intent = Intent(this@HomeAdmin, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }*/
 
 //    handle click ,start add category page
         binding.categoryBtn.setOnClickListener {
@@ -75,11 +44,10 @@ class HomeAdmin : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-//        binding.profileBtn.setOnClickListener {
-//            val intent= Intent(this,ProfileActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.userImageAdmin.setOnClickListener {
+            intent=Intent(this@HomeAdmin,ProfileAdminActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadCategories() {
@@ -100,7 +68,7 @@ class HomeAdmin : AppCompatActivity() {
 
                 }
 //                setup adapter
-                adapterCategory= AdapterCategory(this@HomeAdmin,categoryArrayList)
+                adapterCategory = AdapterCategory(this@HomeAdmin,categoryArrayList)
 //                set Adapter to RecyclerView
                 binding.categoriesRv.adapter=adapterCategory
             }

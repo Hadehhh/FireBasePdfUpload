@@ -70,6 +70,7 @@
 
     <Button
         android:id="@+id/submitButton"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_centerHorizontal="true"
         android:layout_width="300sp"
         android:layout_marginTop="50dp"
@@ -77,7 +78,7 @@
         android:backgroundTint="@color/blueText"
         android:layout_below="@id/category_et"
         android:text="Tambah"
-        app:icon="@drawable/baseline_add_24"
+        app:icon="@drawable/categoryicon"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:fontFamily="@font/poppins_bold"

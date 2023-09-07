@@ -10,9 +10,8 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
         android:background="@color/white"
         android:drawableStart="@drawable/baseline_search_24"
         android:hint="Cari disini"
@@ -21,7 +20,7 @@
         android:textColor="@color/blueText"
         />
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vpSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,7 +30,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_pdf_user" />
+        tools:listitem="@layout/row_search" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -46,10 +45,3 @@
         app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView"-->
-<!--        android:layout_below="@id/search"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-<!--</RelativeLayout>-->
