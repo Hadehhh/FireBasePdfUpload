@@ -170,7 +170,6 @@ class HomeUser : AppCompatActivity() {
 //            add title that will be passed as parameter
             fragmentTitleList.add(title)
         }
-
     }
     private fun loadUserInfo() {
 

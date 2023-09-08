@@ -2,11 +2,14 @@ package com.example.firebasepdfupload.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasepdfupload.Activity.MainActivity
 import com.example.firebasepdfupload.Activity.PdfDetailsActivity
@@ -16,7 +19,6 @@ import com.example.firebasepdfupload.databinding.RowSearchBinding
 
 
 class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterable {
-
     //    context , get using constructor
     private  var context: Context
     //    arraylist to holdPdf,get using constructor
@@ -100,5 +102,6 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         var categoryTv=binding.tvCategory
         var sizeTv=binding.tvSize
         var dateTv=binding.tvDate
+        var moreBtn=binding.moreBtn
     }
 }
