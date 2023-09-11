@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/layoutTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -56,7 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:layout_margin="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="10dp"
         app:tabTextColor="@color/black"
         app:tabSelectedTextColor="@color/white"
         app:tabBackground="@drawable/tab_selector"
@@ -69,6 +70,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpPdf"
         app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        android:layout_marginTop="11dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

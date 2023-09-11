@@ -85,7 +85,6 @@
             android:id="@+id/addPdfFab"
             app:fabCustomSize="50dp"
             android:src="@drawable/baseline_picture_as_pdf_24"
-            android:tint="@color/white"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>

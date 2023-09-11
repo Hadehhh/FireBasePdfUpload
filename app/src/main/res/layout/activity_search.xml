@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
+        android:background="@drawable/search_background"
         android:drawableStart="@drawable/baseline_search_24"
         android:inputType="text"
         android:hint="Cari disini"

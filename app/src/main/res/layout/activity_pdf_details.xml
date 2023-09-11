@@ -221,7 +221,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#B9C3FF"
+            android:backgroundTint="@color/cv"
             android:fontFamily="@font/poppins_bold"
             android:text="Tambah ke Markah"
             android:textColor="@color/black"

@@ -10,19 +10,33 @@
 
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Masuk"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/blueText"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="220dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Masuk untuk melanjutkan"
-        android:textColor="@color/blueText"
-        android:textSize="18sp"
+        android:text="Silahkan masuk untuk melanjutkan"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginEmailLayout"
