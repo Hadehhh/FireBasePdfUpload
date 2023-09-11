@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.ProfileActivity">
 
     <RelativeLayout
@@ -46,9 +47,8 @@
         android:layout_marginTop="70dp"
         android:background="@color/white"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo"
+        android:src="@drawable/person"
         app:civ_border_color="@color/black"
-        app:civ_border_width="1dp"
         />
 
     <LinearLayout
@@ -183,20 +183,19 @@
 
     <Button
         android:id="@+id/btnLogout"
-        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_navigation"
         android:layout_below="@+id/layoutProf"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins_bold"
-        android:backgroundTint="@color/blueText"
-        app:icon="@drawable/baseline_logout_24"
+        android:layout_centerInParent="true"
         android:layout_marginTop="55dp"
         android:layout_marginBottom="55dp"
-        android:layout_centerInParent="true"
-        android:text="Keluar" />
+        android:backgroundTint="@color/blueText"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Keluar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_logout_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -208,6 +207,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_alignParentBottom="true"
+        app:itemActiveIndicatorStyle="@style/App.BottomNavBar.Indicator"
         app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

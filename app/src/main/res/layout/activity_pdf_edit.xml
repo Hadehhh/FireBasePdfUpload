@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.PdfActivity">
 
     <RelativeLayout
@@ -106,7 +107,6 @@
 
     <Button
         android:id="@+id/updateButton"
-        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_below="@id/pdf_cat_tv"
         android:layout_width="300dp"
         android:layout_centerHorizontal="true"
@@ -115,7 +115,6 @@
         android:backgroundTint="@color/blueText"
         android:fontFamily="@font/poppins_bold"
         android:text="Ubah Rincian"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:icon="@drawable/baseline_edit_24" />

@@ -161,6 +161,8 @@ class PdfActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d(TAG,"uploadedPdfInfoToDb:uploaded to db")
                 hideProgressDialog()
+                val intent= Intent(this,HomeAdmin::class.java)
+                startActivity(intent)
                 Toast.makeText(this,"Berhasil di-unggah..", Toast.LENGTH_SHORT).show()
                 pdfUri=null
 
@@ -222,7 +224,7 @@ class PdfActivity : AppCompatActivity() {
 //                handle item click
 //                get clicked item
                 selectedCategoryTitle=categoryArrayList[which].category
-                selectedCategoryId=categoryArrayList[which].id
+                selectedCategoryId=categoryArrayList[which].categoryId
 
 //                set category to textview
                 binding.pdfCatTv.text=selectedCategoryTitle

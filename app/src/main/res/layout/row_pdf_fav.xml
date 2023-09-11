@@ -5,6 +5,9 @@
     android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="5dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:backgroundTint="@color/CardView"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
     app:contentPadding="5dp">
@@ -16,7 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/blue">
+            android:background="@color/white">
 
             <com.github.barteksc.pdfviewer.PDFView
                 android:id="@+id/pdfView"

@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.BookmarkActivity">
 
     <RelativeLayout
@@ -42,6 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_alignParentBottom="true"
+        app:itemActiveIndicatorStyle="@style/App.BottomNavBar.Indicator"
         app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

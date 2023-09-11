@@ -3,7 +3,7 @@ package com.example.firebasepdfupload.Model
 class ModelCategory {
     //    variables, must watch as  in firebase
 //    from categoryAdd Activity
-    var id: String = ""
+    var categoryId: String = ""
     var category: String = ""
     var timestamp: Long = 0
     var uid: String = ""
@@ -12,8 +12,8 @@ class ModelCategory {
     constructor()
 
     //    parametrized constructor
-    constructor(id: String, category: String, timestamp: Long, uid: String) {
-        this.id = id
+    constructor(categoryId: String, category: String, timestamp: Long, uid: String) {
+        this.categoryId = categoryId
         this.category = category
         this.timestamp = timestamp
         this.uid = uid

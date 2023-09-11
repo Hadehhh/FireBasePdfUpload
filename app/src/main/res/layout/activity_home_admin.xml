@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.HomeAdmin">
+
     <RelativeLayout
         android:id="@+id/toolbar_up"
         android:layout_width="match_parent"
@@ -20,9 +22,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/logo"
-            app:civ_border_color="@color/black"
-            app:civ_border_width="1dp" />
+            android:src="@drawable/person" />
 
         <TextView
             android:id="@+id/tittle_tv"
@@ -68,7 +68,6 @@
             android:layout_weight="1"
             android:minHeight="50dp"
             android:textAllCaps="false"
-            style="@style/Widget.Material3.Button.TonalButton.Icon"
             app:icon="@drawable/categoryicon"
             android:text="Tambah Kategori"
             android:layout_marginBottom="5dp"
@@ -76,8 +75,7 @@
             android:fontFamily="@font/poppins_bold"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:backgroundTint="@color/blueText"
-            android:textColor="@color/black"/>
+            android:backgroundTint="@color/blueText" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

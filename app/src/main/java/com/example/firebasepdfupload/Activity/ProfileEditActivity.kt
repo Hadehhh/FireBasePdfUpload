@@ -104,7 +104,6 @@ class ProfileEditActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(uploadedImageUrl: String) {
-        showProgressDialog("Updating Profile..")
 //        setup info to update to db
         val hashMap:HashMap<String,Any> =HashMap()
         hashMap["name"]= name
@@ -118,9 +117,7 @@ class ProfileEditActivity : AppCompatActivity() {
             .updateChildren(hashMap)
             .addOnSuccessListener {
 //                profile updated
-                hideProgressDialog()
                 Toast.makeText(this,"Profile Updated", Toast.LENGTH_SHORT).show()
-
             }
             .addOnFailureListener {
                 hideProgressDialog()

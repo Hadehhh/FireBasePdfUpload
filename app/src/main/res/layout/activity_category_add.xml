@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.CategoryAddActivity">
 
     <RelativeLayout
@@ -70,7 +71,6 @@
 
     <Button
         android:id="@+id/submitButton"
-        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_centerHorizontal="true"
         android:layout_width="300sp"
         android:layout_marginTop="50dp"
@@ -79,7 +79,6 @@
         android:layout_below="@id/category_et"
         android:text="Tambah"
         app:icon="@drawable/categoryicon"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"

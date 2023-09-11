@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.firebasepdfupload.Adapter.AdapterCategory
 import com.example.firebasepdfupload.Model.ModelCategory
+import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityHomeAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +32,7 @@ class HomeAdmin : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth= FirebaseAuth.getInstance()
+        loadUserInfo()
         loadCategories()
 
 
@@ -77,5 +80,28 @@ class HomeAdmin : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+    private fun loadUserInfo() {
+
+//      db ref to load user info
+        val ref=FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseAuth.uid!!)
+            .addValueEventListener(object:ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+//                  Get user info
+                    val profilePic="${snapshot.child("profileImage").value}"
+
+//                  Set image
+                    try{
+                        Glide.with(this@HomeAdmin)
+                            .load(profilePic)
+                            .into(binding.userImageAdmin)
+                    }
+                    catch (e:Exception){
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
     }
 }

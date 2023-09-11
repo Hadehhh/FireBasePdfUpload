@@ -59,7 +59,7 @@ class PdfFragment : Fragment {
 //        load  pdf according to category , this fragment will have new instance to load each
 //        category pdfs
         Log.d(TAG,"onCreateView: $category")
-        if(category=="All")
+        if(category=="Lihat Semua")
         {
 //            load all boo
             loadAllBooks()

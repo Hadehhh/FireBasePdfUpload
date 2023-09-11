@@ -3,17 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="10dp"
     android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="5dp"
     app:cardCornerRadius="10dp"
-    android:backgroundTint="@color/cv"
+    android:backgroundTint="@color/CardView"
     app:cardElevation="5dp"
     app:contentPadding="5dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:id="@+id/pdfRl"
             android:layout_width="100dp"
@@ -39,7 +41,6 @@
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:id="@+id/category_Tv"
             android:layout_toEndOf="@id/pdfRl"
-            android:layout_toStartOf="@+id/moreBtn"
             android:maxLines="1"
             android:text="Kategori"
             />

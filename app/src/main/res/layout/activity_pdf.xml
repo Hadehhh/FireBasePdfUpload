@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.PdfActivity">
 
     <RelativeLayout
@@ -122,7 +123,6 @@
 
     <Button
         android:id="@+id/uploadButton"
-        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_below="@id/attach_file"
         android:layout_width="300dp"
         android:layout_centerHorizontal="true"
@@ -131,7 +131,6 @@
         android:backgroundTint="@color/blueText"
         android:fontFamily="@font/poppins_bold"
         android:text="Unggah"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:icon="@drawable/baseline_file_upload_24" />

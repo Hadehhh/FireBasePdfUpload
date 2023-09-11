@@ -5,11 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.PdfView">
+
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize">
+
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
@@ -23,10 +26,12 @@
             android:id="@+id/toolbarTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Read Book"
+            android:text="Judul"
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
+            android:textColor="@color/blueText"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/sub_title_tv"
@@ -35,7 +40,7 @@
             android:layout_below="@id/toolbarTitleTv"
             android:layout_centerHorizontal="true"
             android:text="N/N"
-            android:textColor="@color/white"
+            android:textColor="@color/blueText"
             android:textSize="12sp"/>
 
     </RelativeLayout>

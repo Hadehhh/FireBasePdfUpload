@@ -58,7 +58,7 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
 
 //        get Data
         val model=categoryArrayList[position]
-        val id=model.id
+        val categoryId=model.categoryId
         val category=model.category
         val uid=model.uid
         val timestamp=model.timestamp
@@ -87,7 +87,7 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
 //        handle click ,start pdf list admin activity ,also pass pdf id ,title
         holder.itemView.setOnClickListener {
             val intent= Intent(context, PdfListAdminActivity::class.java)
-            intent.putExtra("categoryId",id)
+            intent.putExtra("categoryId",categoryId)
             intent.putExtra("category",category)
             context.startActivity(intent)
         }
@@ -95,10 +95,10 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
 
     private fun deleteCategory(model: ModelCategory, holder: HolderCategory) {
 //        get id of category to delete
-        val id=model.id
+        val categoryId=model.categoryId
 //        Firebase DB  > Categories > categoryId
         val ref= FirebaseDatabase.getInstance().getReference("Categories")
-        ref.child(id)
+        ref.child(categoryId)
             .removeValue()
             .addOnSuccessListener {
                 Toast.makeText(context,"Berhasil dihapus..", Toast.LENGTH_SHORT).show()

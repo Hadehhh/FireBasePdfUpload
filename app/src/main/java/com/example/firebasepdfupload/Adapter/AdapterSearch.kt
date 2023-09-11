@@ -102,6 +102,5 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         var categoryTv=binding.tvCategory
         var sizeTv=binding.tvSize
         var dateTv=binding.tvDate
-        var moreBtn=binding.moreBtn
     }
 }

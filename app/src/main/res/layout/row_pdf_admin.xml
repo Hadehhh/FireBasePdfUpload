@@ -5,9 +5,10 @@
     android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="5dp"
+    android:layout_marginHorizontal="10dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
-    android:backgroundTint="@color/blue"
+    android:backgroundTint="@color/CardView"
     app:contentPadding="5dp">
     <RelativeLayout
         android:layout_width="match_parent"

@@ -2,18 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blueText">#38B6FF</color>
+    <color name="blueText">#106585</color>
     <color name="blue">#cae6ff</color>
     <color name="cv">#d3e5f5</color>
     <color name="transparent">#66FFFFFF</color>
-
+    <color name="CardView">#ECF2FF</color>
 
     <color name="seed">#00687A</color>
-    <color name="md_theme_light_primary">#00687A</color>
+    <color name="md_theme_light_primary">#106585</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#ABEDFF</color>
     <color name="md_theme_light_onPrimaryContainer">#001F26</color>
-    <color name="md_theme_light_secondary">#4758A9</color>
+    <color name="md_theme_light_secondary">#d3e5f5</color>
     <color name="md_theme_light_onSecondary">#FFFFFF</color>
     <color name="md_theme_light_secondaryContainer">#DDE1FF</color>
     <color name="md_theme_light_onSecondaryContainer">#001257</color>

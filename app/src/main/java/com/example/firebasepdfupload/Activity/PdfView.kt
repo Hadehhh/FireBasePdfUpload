@@ -28,8 +28,6 @@ class PdfView : AppCompatActivity() {
         binding=ActivityPdfViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         pdfId=intent.getStringExtra("pdfId")!!
         loadPdfDetails()
 
@@ -49,9 +47,11 @@ class PdfView : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
 //                    get pdf url
                     val pdfUrl=snapshot.child("url").value
+                    val pdfTitle=snapshot.child("title").value
                     Log.d(TAG,"onDataChange:PDF_URL:$pdfUrl")
 //                    step2 load pdf using url from firebase storage
                     loadPdfFromUrl("$pdfUrl")
+                    binding.toolbarTitleTv.text = pdfTitle.toString()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

@@ -102,7 +102,7 @@ class HomeUser : AppCompatActivity() {
 //              Clear list
                 categoryArrayList.clear()
 
-                val modelAll= ModelCategory("01","All",1,"")
+                val modelAll= ModelCategory("01","Lihat Semua",1,"")
 
                 categoryArrayList.add(modelAll)
 
@@ -110,7 +110,7 @@ class HomeUser : AppCompatActivity() {
 
                 viewPagerAdapter.addFragment(
                     PdfFragment.newInstance(
-                        "${modelAll.id}",
+                        "${modelAll.categoryId}",
                         "${modelAll.category}",
                         "${modelAll.uid}"
                     ),modelAll.category
@@ -126,7 +126,7 @@ class HomeUser : AppCompatActivity() {
 //                  Add to viewPagerAdapter
                     viewPagerAdapter.addFragment(
                         PdfFragment.newInstance(
-                            "${model.id}",
+                            "${model.categoryId}",
                             "${model.category}",
                             "${model.uid}"
                         ),model.category
@@ -189,9 +189,7 @@ class HomeUser : AppCompatActivity() {
                     try{
                         Glide.with(this@HomeUser)
                             .load(profilePic)
-                            .placeholder(R.drawable.logo)
                             .into(binding.userImage)
-
                     }
                     catch (e:Exception){
                     }
