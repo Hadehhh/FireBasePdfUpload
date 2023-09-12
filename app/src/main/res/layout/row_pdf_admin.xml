@@ -51,7 +51,7 @@
             android:layout_below="@id/category_Tv"
             android:layout_toEndOf="@id/pdfRl"
             android:layout_toStartOf="@+id/moreBtn"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="Judul"
             android:ellipsize="end"
             />

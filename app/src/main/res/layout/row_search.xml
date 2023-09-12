@@ -40,7 +40,6 @@
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:id="@+id/tvCategory"
             android:layout_toEndOf="@id/pdfRl"
-            android:layout_toStartOf="@+id/moreBtn"
             android:maxLines="1"
             android:text="Kategori"
             />
@@ -51,9 +50,8 @@
             android:id="@+id/tvTitle"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_toEndOf="@id/pdfRl"
-            android:layout_toStartOf="@+id/moreBtn"
             android:layout_below="@id/tvCategory"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="Judul"
             android:ellipsize="end"
             />

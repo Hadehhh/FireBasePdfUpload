@@ -19,50 +19,51 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.022" />
 
-        <TextView
-            android:id="@+id/sub_title_tv"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="Kategori"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="18sp"
-            android:textColor="@color/blueText"
-            tools:ignore="RelativeOverlap" />
+            android:layout_toRightOf="@id/back_image"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/search_background"
+            android:inputType="text"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:hint="Cari Disini"
+            android:padding="10dp"
+            />
 
 
     </RelativeLayout>
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/sub_title_tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Kategori"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="18sp"
+        android:textColor="@color/blueText"
         android:layout_below="@id/toolbar_up"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/white"
-        android:inputType="text"
-        android:drawableStart="@drawable/baseline_search_24"
-        android:hint="Cari Disini"
-        android:padding="10dp"
-        />
+        tools:ignore="RelativeOverlap" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pdfs_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_bar"
-        android:layout_marginStart="10dp"
+        android:layout_below="@id/sub_title_tv"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_pdf_admin" />

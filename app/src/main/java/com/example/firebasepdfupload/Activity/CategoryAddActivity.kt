@@ -41,7 +41,7 @@ class CategoryAddActivity : AppCompatActivity() {
         category=binding.categoryEt.text.toString().trim()
         if(category.isEmpty())
         {
-            Toast.makeText(this,"Enter Category..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Masukkan Kategori..", Toast.LENGTH_SHORT).show()
         }
         else
         {
@@ -52,7 +52,7 @@ class CategoryAddActivity : AppCompatActivity() {
 
     private fun addCategoryFirebase() {
 //      Menampilkan dialog
-        showProgressDialog("please wait..")
+        showProgressDialog("Please wait..")
         val timestamp = System.currentTimeMillis()
         val hashMap = HashMap<String, Any>()
         hashMap["categoryId"] = "$timestamp"

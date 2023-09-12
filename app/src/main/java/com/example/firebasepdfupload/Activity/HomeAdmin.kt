@@ -25,7 +25,6 @@ class HomeAdmin : AppCompatActivity() {
     //    adapter
     private lateinit var adapterCategory: AdapterCategory
 
-    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityHomeAdminBinding.inflate(layoutInflater)
