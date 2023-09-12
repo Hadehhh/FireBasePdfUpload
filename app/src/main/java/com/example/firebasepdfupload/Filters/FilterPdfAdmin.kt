@@ -48,8 +48,6 @@ class FilterPdfAdmin: Filter {
         return results
 
     }
-
-
     @SuppressLint("NotifyDataSetChanged")
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
 //        apply filter changes

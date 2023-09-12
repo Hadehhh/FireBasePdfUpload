@@ -27,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
-@SuppressLint("StaticFieldLeak")
 private lateinit var  binding:  ActivityProfileEditBinding
 private lateinit var firebaseAuth: FirebaseAuth
 
@@ -63,7 +62,7 @@ class ProfileEditActivity : AppCompatActivity() {
 //        get data
         name=binding.nameEt.text.toString().trim()
         if(name.isEmpty()){
-            Toast.makeText(this,"Enter name", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Masukkan nama", Toast.LENGTH_SHORT).show()
         }
         else
         {
@@ -82,7 +81,7 @@ class ProfileEditActivity : AppCompatActivity() {
     }
 
     private fun uploadImage() {
-        showProgressDialog("Uploading Profile Image")
+        showProgressDialog("Mengunggah foto profile")
 //        image path and name , use uid to replace the previous name
         val filePathAndName="ProfileImages/"+ firebaseAuth.uid
 //        storage ref
@@ -117,7 +116,7 @@ class ProfileEditActivity : AppCompatActivity() {
             .updateChildren(hashMap)
             .addOnSuccessListener {
 //                profile updated
-                Toast.makeText(this,"Profile Updated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Profile berhasil diperbarui", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 hideProgressDialog()
@@ -214,7 +213,7 @@ class ProfileEditActivity : AppCompatActivity() {
             }
             else
             {
-                Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Dibatalkan", Toast.LENGTH_SHORT).show()
             }
         }
     )
@@ -230,7 +229,7 @@ class ProfileEditActivity : AppCompatActivity() {
             }
             else
             {
-                Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Dibatalkan", Toast.LENGTH_SHORT).show()
             }
 
         }

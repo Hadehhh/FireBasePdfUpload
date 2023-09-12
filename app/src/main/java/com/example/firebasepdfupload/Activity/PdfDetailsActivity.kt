@@ -25,10 +25,7 @@ import com.google.firebase.storage.FirebaseStorage
 import java.io.FileOutputStream
 
 class PdfDetailsActivity : AppCompatActivity() {
-    internal companion object{
-        const val TAG="PDF_DETAILS_TAG"
 
-    }
     private lateinit var mProgressDialog: Dialog
     private lateinit var binding: ActivityPdfDetailsBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -71,11 +68,9 @@ class PdfDetailsActivity : AppCompatActivity() {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_DENIED
             ) {
-                Log.d(TAG, "onCreate : Storage permission is granted")
                 downloadPdf()
 
             } else {
-                Log.d(TAG, "OnCreate : storage permission is denied,Let's request it")
                 requestStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
@@ -92,35 +87,29 @@ class PdfDetailsActivity : AppCompatActivity() {
 
     private val requestStoragePermissionLauncher= registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted:Boolean->
         if(isGranted){
-            Log.d(TAG,"onCreate :STORAGE permission is granted")
         }
         else
         {
-            Log.d(TAG,"onCreate :STORAGE permission is denied")
-            Toast.makeText(this,"permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Izin akses ditolak", Toast.LENGTH_SHORT).show()
         }
     }
     private fun downloadPdf(){
-        Log.d(TAG,"Downloading Pdf")
 //        progressBar
-        showProgressDialog("Downloading Pdf")
+        showProgressDialog("Mengunduh Pdf")
 
 //        lets download pdf from firebase storage
         val storageRef= FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
         storageRef.getBytes(MaxSize.MAX_BYTES_PDF)
             .addOnSuccessListener {bytes->
-                Log.d(TAG,"downloadPdf: Pdf download...")
                 saveToDownloadsFolder(bytes)
             }
             .addOnFailureListener {e->
                 hideProgressDialog()
-                Log.d(TAG,"Failed to download Pdf due to ${e.message}")
                 Toast.makeText(this,"Failed to download Pdf due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun saveToDownloadsFolder(bytes: ByteArray?) {
-        Log.d(TAG,"saveToDownloadFolder : saving download Pdf")
         val nameWithExtension="$pdfTitle.pdf"
         try {
             val downloadFolder= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
@@ -130,13 +119,11 @@ class PdfDetailsActivity : AppCompatActivity() {
             val out= FileOutputStream(filePath)
             out.write(bytes)
             out.close()
-            Toast.makeText(this,"Saved to Download Folder", Toast.LENGTH_SHORT).show()
-            Log.d(TAG,"Saved to Download Folder")
+            Toast.makeText(this,"File telah ter-unduh", Toast.LENGTH_SHORT).show()
             hideProgressDialog()
 
         }
         catch (e:Exception){
-            Log.d(TAG,"saveToDownloadsFolder:failed to save due to ${e.message}")
             Toast.makeText(this,"failed to save due to ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
@@ -200,29 +187,21 @@ class PdfDetailsActivity : AppCompatActivity() {
         mProgressDialog.dismiss()
     }
 
-
-    @SuppressLint("SuspiciousIndentation")
-
-
     private fun checkIsFav(){
-        Log.d(TAG,"checkIsFav: Checking if pdf is in fav or not")
         val ref= FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!).child("Bookmarks").child(pdfId)
             .addValueEventListener(object : ValueEventListener {
-                @SuppressLint("SetTextI18n")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     isMyFavourite=snapshot.exists()
                     if(isMyFavourite)
                     {
-                        Log.d(TAG,"onDataChange: available in favourite")
-//                        available in favourite,, set drawable icon
+                        //                        available in favourite,, set drawable icon
                         binding.favBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.baseline_bookmark_24,
                             0,0,0)
                         binding.favBtn.text="Hapus dari Markah"
                     }
                     else
                     {
-                        Log.d(TAG,"onDataChange : not available in favourite")
 //                        not available in fav
                         binding.favBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.baseline_bookmark_border_24,
                             0, 0,0)
@@ -234,10 +213,7 @@ class PdfDetailsActivity : AppCompatActivity() {
                 }
             })
     }
-
-    @SuppressLint("SuspiciousIndentation")
     private fun addToFav(){
-        Log.d(TAG,"addToFav: Adding to Bookmark")
         val timestamp=System.currentTimeMillis()
 //        setup data to add in db
         val hashMap=HashMap<String,Any>()
@@ -249,31 +225,26 @@ class PdfDetailsActivity : AppCompatActivity() {
         ref.child(firebaseAuth.uid!!).child("Bookmarks").child(pdfId)
             .setValue(hashMap)
             .addOnSuccessListener {
-                Log.d(TAG,"addToFav: Added to Bookmark")
                 Toast.makeText(this,"Berhasil menambahkan ke markah", Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener {
-                Log.d(TAG,"addToFav: Failed to add to fav due to ${it.message}")
                 Toast.makeText(this,"Failed to add to bookmark due to ${it.message}", Toast.LENGTH_SHORT).show()
 
             }
     }
 
     private fun removeFromFav() {
-        Log.d(TAG, "removeFromFav:Removing From Bookmark..")
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!).child("Bookmarks").child(pdfId)
             .removeValue()
             .addOnSuccessListener {
-                Log.d(TAG, "removeFromFavorite: Removed From Bookmark")
-                Toast.makeText(this, "Removed from Favourite", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Dihapus dari markah", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Log.d(TAG, "removeFromFavourite: Failed to remove from bookmark due to ${it.message}")
                 Toast.makeText(
                     this,
-                    "Failed to remove from fav due to ${it.message}",
+                    "Failed to remove from bookmark due to ${it.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

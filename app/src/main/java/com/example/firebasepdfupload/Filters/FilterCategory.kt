@@ -51,8 +51,6 @@ class FilterCategory: Filter {
 //        don't mis it
         return results
     }
-
-    @SuppressLint("NotifyDataSetChanged")
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
 //        apply filter changes
         adapterCategory.categoryArrayList=results.values as ArrayList<ModelCategory>

@@ -37,7 +37,7 @@ class ProfileActivity : AppCompatActivity() {
 
 //        reset to default values
         binding.memberDateTv.text="N/A"
-        binding.favouritePdfscountTv.text="N/A"
+        binding.bookmarkPdfscountTv.text="N/A"
 
         firebaseAuth= FirebaseAuth.getInstance()
         firebaseUser=firebaseAuth.currentUser!!
@@ -121,7 +121,6 @@ class ProfileActivity : AppCompatActivity() {
                     val profilePic="${snapshot.child("profileImage").value}"
                     val timestamp="${snapshot.child("timestamp").value}"
                     val uid="${snapshot.child("uid").value}"
-                    val userType="${snapshot.child("userType").value}"
 
 //                    convert timestamp to proper date format
                     val formattedDate=MainActivity.formatTimeStamp(timestamp.toLong())
@@ -129,7 +128,6 @@ class ProfileActivity : AppCompatActivity() {
                     binding.nameTv.text=name
                     binding.emailTv.text=email
                     binding.memberDateTv.text=formattedDate
-//                    binding.accountTypeTv.text=userType
 
 //                    set image
                     try{
@@ -165,7 +163,7 @@ class ProfileActivity : AppCompatActivity() {
 //                        add model to list
                         pdfsArrayList.add(modelPdf)
                     }
-                    binding.favouritePdfscountTv.text="${pdfsArrayList.size}"
+                    binding.bookmarkPdfscountTv.text="${pdfsArrayList.size}"
                     adapterPdfFav=AdapterPdfFav(this@ProfileActivity,pdfsArrayList)
 //                    binding.favRv.adapter=adapterPdfFav
                 }

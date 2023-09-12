@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Profile"
+            android:text="Akun"
             android:textColor="@color/blueText"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -48,8 +48,6 @@
         android:background="@color/white"
         android:scaleType="centerCrop"
         android:src="@drawable/person"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="1dp"
         />
 
     <LinearLayout

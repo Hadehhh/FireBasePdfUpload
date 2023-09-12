@@ -57,7 +57,6 @@ class AdapterPdfFav  : RecyclerView.Adapter<AdapterPdfFav.HolderPdfFav>{
 
     }
 
-    @SuppressLint("SuspiciousIndentation")
     private fun loadPdfDetails(model: ModelPdf, holder: AdapterPdfFav.HolderPdfFav) {
         val pdfId=model.id
         val ref= FirebaseDatabase.getInstance().getReference("Pdfs")

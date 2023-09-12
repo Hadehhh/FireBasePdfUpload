@@ -18,14 +18,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class SearchActivity : AppCompatActivity() {
-    private companion object{
-        const val TAG="PDF_SEARCH_TAG"
-    }
+
     private lateinit var binding: ActivitySearchBinding
     private lateinit var pdfArrayList: ArrayList<ModelPdf>
     private lateinit var adapterSearch: AdapterSearch
-    private lateinit var recyclerView: RecyclerView
-    private var pdfId = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -93,7 +90,6 @@ class SearchActivity : AppCompatActivity() {
                     adapterSearch.filter!!.filter(s)
                 }
                 catch (e:Exception){
-                    Log.d(TAG,"onTextChanged:${e.message}")
                 }
             }
 

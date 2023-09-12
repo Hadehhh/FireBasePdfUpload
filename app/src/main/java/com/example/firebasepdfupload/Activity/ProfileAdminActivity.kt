@@ -21,8 +21,6 @@ import com.google.firebase.database.ValueEventListener
 class ProfileAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileAdminBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var pdfsArrayList: ArrayList<ModelPdf>
-    private lateinit var adapterPdfFav: AdapterPdfFav
 
     //    firebase current user
     private lateinit var firebaseUser: FirebaseUser
@@ -53,8 +51,6 @@ class ProfileAdminActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    @SuppressLint("SetTextI18n")
     private fun loadUserInfo() {
 
 //        db ref to load user info

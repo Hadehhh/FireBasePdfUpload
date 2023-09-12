@@ -33,9 +33,6 @@ class PdfActivity : AppCompatActivity() {
 
     //    uri of picked pdf
     private  var pdfUri: Uri?=null
-    //    TAG
-    private val TAG="PDF_ADD_TAG"
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,8 +70,6 @@ class PdfActivity : AppCompatActivity() {
     private var category=""
 
     private fun validateData() {
-        Log.d(TAG,"validate Data:validating Data ")
-
 //        get data
         title=binding.pdfTitleEdt.text.toString().trim()
         description=binding.pdfDesEdt.text.toString().trim()
@@ -104,8 +99,6 @@ class PdfActivity : AppCompatActivity() {
         }
     }
     private fun uploadPdfToStorage() {
-        Log.d(TAG,"uploadPdfToStorage:Uploading to storage")
-
 //        show progress dialog
         showProgressDialog("Mengunggah File..")
 //        timestamp
@@ -119,7 +112,6 @@ class PdfActivity : AppCompatActivity() {
 
         storageReference.putFile(pdfUri!!)
             .addOnSuccessListener {taskSnapshot->
-                Log.d(TAG,"uploadPdfToStorage: Pdf Uploaded now getting Url...")
 //                set url of uploaded pdf-->step3
                 val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
 
@@ -130,7 +122,6 @@ class PdfActivity : AppCompatActivity() {
 
             }
             .addOnFailureListener{
-                Log.d(TAG,"uploadPdfToStorage: failed to upload due to ${it.message}")
                 hideProgressDialog()
                 Toast.makeText(this,"Failed upload due to ${it.message} ", Toast.LENGTH_SHORT).show()
             }
@@ -138,7 +129,6 @@ class PdfActivity : AppCompatActivity() {
 
     private fun uploadPdfInfoToDb(uploadedPdfUrl: String, timestamp: Long) {
 //    Upload pdf info to firebase db
-        Log.d(TAG,"UploadPdfInfoToDb:uploading to db")
         showProgressDialog("Mengunggah pdf info..")
 
 //        uid of current user
@@ -159,7 +149,6 @@ class PdfActivity : AppCompatActivity() {
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
-                Log.d(TAG,"uploadedPdfInfoToDb:uploaded to db")
                 hideProgressDialog()
                 val intent= Intent(this,HomeAdmin::class.java)
                 startActivity(intent)
@@ -168,7 +157,6 @@ class PdfActivity : AppCompatActivity() {
 
             }
             .addOnFailureListener{
-                Log.d(TAG,"uploadPdfInfoToDb : failed to upload due to ${it.message}")
                 hideProgressDialog()
                 Toast.makeText(this,"Failed upload due to ${it.message} ", Toast.LENGTH_SHORT).show()
 
@@ -178,7 +166,6 @@ class PdfActivity : AppCompatActivity() {
     }
 
     private fun loadPdfCategories() {
-        Log.d(TAG,"loadPdfCategories: Loading Pdf Categories")
 //        init arrayList
         categoryArrayList= ArrayList()
 //        db reference to load categories DF >Categories
@@ -194,7 +181,6 @@ class PdfActivity : AppCompatActivity() {
                     val model=it.getValue(ModelCategory::class.java)
 //                    add to array List
                     categoryArrayList.add(model!!)
-                    Log.d(TAG,"on Data Change:${model.category}")
                 }
             }
 
@@ -208,7 +194,6 @@ class PdfActivity : AppCompatActivity() {
 
     private fun categoryPickDialog()
     {
-        Log.d(TAG,"CategoryPickDialog: Showing pdf category pick dialog")
 
 //        get string array of Categories from arrayList
         val categoriesArray= arrayOfNulls<String>(categoryArrayList.size)
@@ -228,15 +213,11 @@ class PdfActivity : AppCompatActivity() {
 
 //                set category to textview
                 binding.pdfCatTv.text=selectedCategoryTitle
-
-                Log.d(TAG,"categoryPickDialog: Selected Category ID: $selectedCategoryId")
-                Log.d(TAG,"categoryPickDialog: Selected Category Title: $selectedCategoryTitle")
             }
             .show()
     }
 
     private fun pdfPickIntent(){
-        Log.d(TAG,"pdfPickIntent: starting pdf pick intent")
         val intent= Intent()
         intent.type="application/pdf"
         intent.action= Intent.ACTION_GET_CONTENT
@@ -247,12 +228,10 @@ class PdfActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult(),
         ActivityResultCallback<ActivityResult> { result ->
             if(result.resultCode== RESULT_OK){
-                Log.d(TAG,"PDF Picked")
                 pdfUri=result.data!!.data
             }
             else
             {
-                Log.d(TAG,"PDF pick Cancelled")
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
             }
         }

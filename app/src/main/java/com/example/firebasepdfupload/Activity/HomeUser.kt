@@ -89,7 +89,7 @@ class HomeUser : AppCompatActivity() {
             }
         }
     }
-    @SuppressLint("SuspiciousIndentation")
+
     private fun setUpWithViewPagerAdapter(viewPager: ViewPager){
         viewPagerAdapter= ViewPagerAdapter(supportFragmentManager,
             FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,this)

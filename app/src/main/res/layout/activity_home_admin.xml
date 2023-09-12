@@ -84,7 +84,7 @@
             android:layout_marginBottom="5dp"
             android:id="@+id/addPdfFab"
             app:fabCustomSize="50dp"
-            android:src="@drawable/baseline_picture_as_pdf_24"
+            android:src="@drawable/pdf_add"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>

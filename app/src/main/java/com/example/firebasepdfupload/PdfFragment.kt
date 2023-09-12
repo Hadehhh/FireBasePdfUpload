@@ -18,7 +18,6 @@ class PdfFragment : Fragment {
     private lateinit var binding: FragmentPdfBinding
 
     public companion object{
-        private const val TAG="PDFS_USER_TAG"
         //        receive  data from activity to load books ex: categoryId, category ,uid
         public fun newInstance(categoryId:String,category:String,uid:String):PdfFragment{
             val fragment = PdfFragment()
@@ -58,7 +57,6 @@ class PdfFragment : Fragment {
         binding=FragmentPdfBinding.inflate(LayoutInflater.from(context),container,false)
 //        load  pdf according to category , this fragment will have new instance to load each
 //        category pdfs
-        Log.d(TAG,"onCreateView: $category")
         if(category=="Lihat Semua")
         {
 //            load all boo

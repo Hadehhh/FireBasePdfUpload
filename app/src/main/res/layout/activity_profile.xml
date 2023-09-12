@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Profile"
+            android:text="Akun"
             android:textColor="@color/blueText"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/email"
             android:layout_marginStart="16dp"
-            android:text="abc_gmail_com"
+            android:text="abc@gmail.com"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tanggal"
             android:layout_marginStart="16dp"
-            android:text="12/12/2021"
+            android:text="DD/MM/YYYY"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -162,7 +162,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/favouritePdfscount_tv"
+            android:id="@+id/bookmarkPdfscount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/markah"

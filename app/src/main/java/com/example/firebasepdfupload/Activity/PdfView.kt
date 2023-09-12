@@ -17,10 +17,6 @@ class PdfView : AppCompatActivity() {
     private lateinit var binding:ActivityPdfViewBinding
 
     //    TAG
-    private companion object{
-        const val TAG="PDF_VIEW_TAG"
-    }
-
     var pdfId=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +33,6 @@ class PdfView : AppCompatActivity() {
     }
 
     private fun loadPdfDetails() {
-        Log.d(TAG,"loadPdfDetails: Get Pdf Url from db")
 //        database ref to get pdf details
 //        ex: get pdf url using pdf id
 //        step 1 Get pdf url using Pdf Id
@@ -48,7 +43,6 @@ class PdfView : AppCompatActivity() {
 //                    get pdf url
                     val pdfUrl=snapshot.child("url").value
                     val pdfTitle=snapshot.child("title").value
-                    Log.d(TAG,"onDataChange:PDF_URL:$pdfUrl")
 //                    step2 load pdf using url from firebase storage
                     loadPdfFromUrl("$pdfUrl")
                     binding.toolbarTitleTv.text = pdfTitle.toString()
@@ -60,32 +54,25 @@ class PdfView : AppCompatActivity() {
             })
 
     }
-    @SuppressLint("SetTextI18n")
     private fun loadPdfFromUrl(pdfUrl: String) {
-        Log.d(TAG,"loadPdfFromUrl:Get Pdf from firebase storage Using Url")
         val reference=FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
         reference.getBytes(MaxSize.MAX_BYTES_PDF)
             .addOnSuccessListener {bytes->
-                Log.d(TAG,"loadPdfFromUrl:Pdf got from Url")
                 binding.pdfView.fromBytes(bytes)
                     .swipeHorizontal(false)  //set false to scroll vertical ,set true to scroll horizontal
                     .onPageChange{page,pageCount->
 //                        set current page and total page in toolbar
                         val currentPage=page+1
                         binding.subTitleTv.text="$currentPage/$pageCount"
-                        Log.d(TAG,"loadPdfFromUrl:$currentPage/$pageCount")
                     }
                     .onError{t->
-                        Log.d(TAG,"loadPdfFromUrl: ${t.message}")
                     }
                     .onPageError { page, t ->
-                        Log.d(TAG,"loadPdfFromUrl:${t.message}")
                     }.load()
                 binding.progressBar.visibility=View.GONE
 
             }
             .addOnFailureListener{e->
-                Log.d(TAG,"loadPdfFromUrl: Failed to get pdf due to ${e.message}")
                 binding.progressBar.visibility=View.GONE
             }
     }

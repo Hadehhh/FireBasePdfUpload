@@ -18,10 +18,6 @@ class PdfEditActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityPdfEditBinding
 
-    private companion object{
-        private const val TAG="PDF_EDIT_TAG"
-    }
-
     //    pdf id get from intent started from AdapterPdfAdmin
     private var pdfId=""
 
@@ -61,7 +57,6 @@ class PdfEditActivity : AppCompatActivity() {
     }
 
     private fun loadPdfInfo() {
-        Log.d(TAG,"loadPdfInfo:Loading pdf info")
         val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
         ref.child(pdfId)
             .addListenerForSingleValueEvent(object: ValueEventListener {
@@ -75,7 +70,6 @@ class PdfEditActivity : AppCompatActivity() {
                     binding.pdfTitleEdt.setText(title)
                     binding.pdfDesEdt.setText(description)
 //                    load pdf category info using categoryId
-                    Log.d(TAG,"onDataChange: Loading pdf Category info")
                     val refPdfCategory= FirebaseDatabase.getInstance().getReference("Categories")
                     refPdfCategory.child(selectedCategoryId)
                         .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -122,7 +116,6 @@ class PdfEditActivity : AppCompatActivity() {
     }
 
     private fun updatePdf() {
-        Log.d(TAG,"updatePdf:Starting updating pdf info..")
         showProgressDialog("Memperbarui Pdf info..")
 //        setup data to update to db, spellings of keys must be same as in firebase
         val hashMap=HashMap<String,Any>()
@@ -136,12 +129,10 @@ class PdfEditActivity : AppCompatActivity() {
             .updateChildren(hashMap)
             .addOnSuccessListener {
                 hideProgressDialog()
-                Log.d(TAG,"updatePdf: Berhasil diperbarui..")
                 Toast.makeText(this,"Berhasil diperbarui...", Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener{e->
-                Log.d(TAG,"updatePdf: Failed to update due to ${e.message}")
                 hideProgressDialog()
                 Toast.makeText(this,"Failed to update due to ${e.message} ", Toast.LENGTH_SHORT).show()
             }
@@ -172,7 +163,6 @@ class PdfEditActivity : AppCompatActivity() {
     }
 
     private fun loadCategories() {
-        Log.d(TAG,"loadCategories: loading categories")
         categoryTitleArrayList= ArrayList()
         categoryIdArrayList=ArrayList()
 
@@ -190,8 +180,6 @@ class PdfEditActivity : AppCompatActivity() {
                     categoryIdArrayList.add(id)
                     categoryTitleArrayList.add(category)
 
-                    Log.d(TAG,"OnDataChange:Category ID $id")
-                    Log.d(TAG,"onDataChange:Category  $category")
                 }
             }
             override fun onCancelled(error: DatabaseError) {

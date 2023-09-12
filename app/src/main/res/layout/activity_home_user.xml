@@ -69,10 +69,10 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpPdf"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout"
-        android:layout_marginTop="11dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="517dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

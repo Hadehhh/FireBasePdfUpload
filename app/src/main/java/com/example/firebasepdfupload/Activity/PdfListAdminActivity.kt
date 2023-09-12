@@ -15,10 +15,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class PdfListAdminActivity : AppCompatActivity() {
-    private companion object{
-        const val TAG="PDF_LIST_ADMIN_TAG"
-    }
-
     //    view binding
     private lateinit var binding: ActivityPdfListAdminBinding
 
@@ -66,7 +62,6 @@ class PdfListAdminActivity : AppCompatActivity() {
                     adapterPdfAdmin.filter!!.filter(s)
                 }
                 catch (e:Exception){
-                    Log.d(TAG,"onTextChanged:${e.message}")
                 }
             }
 
@@ -93,7 +88,6 @@ class PdfListAdminActivity : AppCompatActivity() {
 //                        add to list
                         if (model != null) {
                             pdfArrayList.add(model)
-                            Log.d(TAG,"onDataChange:${model.title}${model.categoryId}")
                         }
                     }
 //                    setup adapter

@@ -71,13 +71,13 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
         holder.deleteBtn.setOnClickListener{
 //            confirm before delete
             val builder= AlertDialog.Builder(context)
-            builder.setTitle("Delete")
-                .setMessage("Are sure you want to delete this Category?")
-                .setPositiveButton("Confirm"){a,d->
-                    Toast.makeText(context,"Deleting...", Toast.LENGTH_SHORT).show()
+            builder.setTitle("Hapus")
+                .setMessage("Yakin ingin menghapus kategori ini?")
+                .setPositiveButton("Ya"){a,d->
+                    Toast.makeText(context,"Menghapus...", Toast.LENGTH_SHORT).show()
                     deleteCategory(model,holder)
                 }
-                .setNegativeButton("Cancel"){a,d->
+                .setNegativeButton("Tidak"){a,d->
                     a.dismiss()
 
                 }
