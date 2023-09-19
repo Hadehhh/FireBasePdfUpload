@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firebasepdfupload.Adapter.AdapterCategory
 import com.example.firebasepdfupload.Model.ModelCategory
@@ -32,6 +35,8 @@ class HomeAdmin : AppCompatActivity() {
 
         firebaseAuth= FirebaseAuth.getInstance()
         loadUserInfo()
+        val recyclerView = binding.categoriesRv
+        recyclerView.layoutManager = LinearLayoutManager(this)
         loadCategories()
 
 
@@ -39,17 +44,36 @@ class HomeAdmin : AppCompatActivity() {
         binding.categoryBtn.setOnClickListener {
             val intent= Intent(this@HomeAdmin, CategoryAddActivity::class.java)
             startActivity(intent)
-            finish()
         }
         binding.addPdfFab.setOnClickListener{
             intent= Intent(this@HomeAdmin, PdfActivity::class.java)
             startActivity(intent)
-            finish()
         }
         binding.userImageAdmin.setOnClickListener {
             intent=Intent(this@HomeAdmin,ProfileAdminActivity::class.java)
             startActivity(intent)
         }
+        binding.btnAllpdf.setOnClickListener {
+            intent=Intent(this@HomeAdmin, ListAllPdfAdmin::class.java)
+            startActivity(intent)
+        }
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+//                filter data
+                try {
+                    adapterCategory.filter!!.filter(s)
+                }
+                catch (e:Exception){
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 
     private fun loadCategories() {

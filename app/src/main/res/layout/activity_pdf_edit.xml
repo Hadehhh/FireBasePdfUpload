@@ -51,50 +51,62 @@
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="477dp" />
 
-    <EditText
-        android:id="@+id/pdf_title_edt"
-        android:layout_below="@id/logo_iv"
-        android:layout_width="350dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/titleLayout"
+        style="@style/LoginTextInputOuterFieldStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:layout_marginHorizontal="20dp"
-        android:drawableStart="@drawable/baseline_picture_as_pdf_24"
-        android:drawablePadding="10sp"
-        android:ems="10"
-        android:hint="Judul"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_up" />
+        android:layout_marginHorizontal="30dp"
+        android:layout_below="@id/logo_iv"
+        app:boxStrokeColor="@color/blueText"
+        app:hintTextColor="@color/blueText"
+        app:counterEnabled="true"
+        app:counterMaxLength="25">
 
-    <EditText
-        android:id="@+id/pdf_des_edt"
-        android:layout_below="@id/pdf_title_edt"
-        android:layout_width="350dp"
-        android:layout_centerHorizontal="true"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pdf_title_edt"
+            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Judul"
+            android:maxLength="17"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descLayout"
+        style="@style/LoginTextInputOuterFieldStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:drawableStart="@drawable/baseline_picture_as_pdf_24"
-        android:drawablePadding="10sp"
-        android:ems="10"
-        android:hint="Deskripsi"
-        android:inputType="textMultiLine|textCapSentences"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pdf_title_edt" />
+        android:layout_marginHorizontal="30dp"
+        android:layout_below="@id/titleLayout"
+        android:layout_marginTop="-10dp"
+        app:boxStrokeColor="@color/blueText"
+        app:hintTextColor="@color/blueText"
+        app:counterEnabled="true"
+        app:counterMaxLength="300">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pdf_des_edt"
+            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Deskripsi"
+            android:maxLines="5"
+            android:maxLength="300"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/pdf_cat_tv"
-        android:layout_below="@id/pdf_des_edt"
+        android:layout_below="@id/descLayout"
         android:layout_width="350sp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="-10dp"
         app:drawableStartCompat="@drawable/baseline_category_24"
         app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
         android:drawablePadding="10dp"
@@ -103,7 +115,7 @@
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pdf_des_edt" />
+        app:layout_constraintTop_toBottomOf="@id/descLayout" />
 
     <Button
         android:id="@+id/updateButton"

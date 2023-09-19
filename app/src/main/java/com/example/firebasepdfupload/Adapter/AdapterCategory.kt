@@ -115,6 +115,6 @@ class AdapterCategory: RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fil
             filter= FilterCategory(filterList,this)
 
         }
-        return filterList as FilterCategory
+        return filter as FilterCategory
     }
 }

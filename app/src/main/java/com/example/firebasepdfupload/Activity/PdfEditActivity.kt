@@ -121,7 +121,7 @@ class PdfEditActivity : AppCompatActivity() {
         val hashMap=HashMap<String,Any>()
         hashMap["title"]= title
         hashMap["description"]= description
-        hashMap["categoryId"]=selectedCategoryId
+        hashMap["categoryId"]= selectedCategoryId
 
 //        start updating
         val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
@@ -174,7 +174,7 @@ class PdfEditActivity : AppCompatActivity() {
                 categoryTitleArrayList.clear()
 
                 for(ds in snapshot.children){
-                    val id="${ds.child("id").value}"
+                    val id="${ds.child("categoryId").value}"
                     val category="${ds.child("category").value}"
 
                     categoryIdArrayList.add(id)

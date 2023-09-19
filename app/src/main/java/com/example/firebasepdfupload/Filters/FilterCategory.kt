@@ -1,6 +1,5 @@
 package com.example.firebasepdfupload.Filters
 
-import android.annotation.SuppressLint
 import android.widget.Filter
 import com.example.firebasepdfupload.Adapter.AdapterCategory
 import com.example.firebasepdfupload.Model.ModelCategory

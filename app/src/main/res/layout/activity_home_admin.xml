@@ -38,17 +38,47 @@
             android:textStyle="bold"
             tools:ignore="RelativeOverlap" />
 
-
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnAllpdf"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lihat Semua Modul"
+        android:background="@drawable/desc_background"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_below="@id/toolbar_up"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"/>
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnAllpdf"
+        android:layout_below="@id/toolbar_up"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:inputType="text"
+        android:hint="Cari Kategori"
+        android:padding="10dp"
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blueText"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categories_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="407dp"
+        android:layout_height="529dp"
         android:layout_above="@id/bottom_layout"
         android:layout_below="@id/toolbar_up"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

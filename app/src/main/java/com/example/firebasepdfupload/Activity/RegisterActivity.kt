@@ -53,10 +53,16 @@ class RegisterActivity : AppCompatActivity() {
         etPassword=binding.passwordET
         etConfPassword=binding.confirmPasswordET
         bRegister=binding.btnSignUp
+        textlogin=binding.tvLogin
 
         bRegister?.setOnClickListener { registerUser() }
 
-        textlogin = findViewById(R.id.tvLogin)
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         textlogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

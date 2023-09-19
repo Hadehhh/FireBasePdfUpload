@@ -10,7 +10,7 @@ import com.example.firebasepdfupload.R
 
 class SplashScreen : AppCompatActivity() {
     //Deklarasi variabel timer splash screennya
-    private val SPLASH_TIME_OUT: Long = 1500 //delay 1.5 detik
+    private val SPLASH_TIME_OUT: Long = 1000 //delay 1.5 detik
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

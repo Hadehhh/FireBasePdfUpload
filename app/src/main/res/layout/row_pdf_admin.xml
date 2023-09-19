@@ -84,10 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@id/size_tv"
             android:maxLines="1"
-            android:text="DD/MM/YYYY"
-            android:textAlignment="center"/>
+            android:text="DD/MM/YYYY" />
 
 
         <ImageButton

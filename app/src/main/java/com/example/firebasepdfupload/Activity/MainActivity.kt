@@ -5,7 +5,6 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView

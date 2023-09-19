@@ -47,7 +47,6 @@ class FilterPdfUser: Filter {
             results.values=filterList
         }
         return results
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
