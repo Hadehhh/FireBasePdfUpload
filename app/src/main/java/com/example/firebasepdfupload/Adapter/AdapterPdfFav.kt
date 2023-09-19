@@ -59,7 +59,7 @@ class AdapterPdfFav  : RecyclerView.Adapter<AdapterPdfFav.HolderPdfFav>{
 
     private fun loadPdfDetails(model: ModelPdf, holder: AdapterPdfFav.HolderPdfFav) {
         val pdfId=model.id
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.child(pdfId)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

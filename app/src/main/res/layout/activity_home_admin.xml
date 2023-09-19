@@ -56,11 +56,11 @@
 
     <EditText
         android:id="@+id/search"
-        android:layout_width="190dp"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btnAllpdf"
         android:layout_below="@id/toolbar_up"
-        android:layout_marginHorizontal="5dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/search_background"
         android:drawableStart="@drawable/baseline_search_24"

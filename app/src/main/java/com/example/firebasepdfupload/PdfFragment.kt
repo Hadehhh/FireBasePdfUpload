@@ -72,7 +72,7 @@ class PdfFragment : Fragment {
     private fun loadAllBooks() {
 //        init list
         pdfArrayList= ArrayList()
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 //                clear list before starting adding data into it
@@ -98,7 +98,7 @@ class PdfFragment : Fragment {
     private fun loadCategorizedBooks() {
         //        init list
         pdfArrayList= ArrayList()
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.orderByChild("categoryId").equalTo(categoryId)  // load most viewed or most downloaded books.   orderBy=""
             .addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

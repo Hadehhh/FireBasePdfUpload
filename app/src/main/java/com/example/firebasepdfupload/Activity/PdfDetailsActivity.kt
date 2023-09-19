@@ -127,8 +127,8 @@ class PdfDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadPdfDetails() {
-//        Pdfs>pdfId>details
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+//        Modul>pdfId>details
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.child(pdfId)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

@@ -18,7 +18,7 @@ class PdfListAdminActivity : AppCompatActivity() {
     //    view binding
     private lateinit var binding: ActivityPdfListAdminBinding
 
-    //    arrayList to hold pdfs
+    //    arrayList to hold Modul
     private lateinit var pdfArrayList: ArrayList<ModelPdf>
     //    adapter
     private lateinit var adapterPdfAdmin: AdapterPdfAdmin
@@ -74,7 +74,7 @@ class PdfListAdminActivity : AppCompatActivity() {
     private fun loadPdfList() {
 //        init arrayList
         pdfArrayList= ArrayList()
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.orderByChild("categoryId").equalTo(categoryId)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

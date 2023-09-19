@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
             val storageRef=FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             storageRef.delete()
                 .addOnSuccessListener {
-                    val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+                    val ref= FirebaseDatabase.getInstance().getReference("Modul")
                     ref.child(pdfId)
                         .removeValue()
                         .addOnSuccessListener {

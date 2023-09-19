@@ -36,7 +36,7 @@ class PdfView : AppCompatActivity() {
 //        database ref to get pdf details
 //        ex: get pdf url using pdf id
 //        step 1 Get pdf url using Pdf Id
-        val ref=FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref=FirebaseDatabase.getInstance().getReference("Modul")
         ref.child(pdfId)
             .addListenerForSingleValueEvent(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {

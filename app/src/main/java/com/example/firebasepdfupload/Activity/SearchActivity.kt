@@ -99,7 +99,7 @@ class SearchActivity : AppCompatActivity() {
     }
     private fun loadPdfList() {
         pdfArrayList = ArrayList()
-        val ref = FirebaseDatabase.getInstance().getReference("Pdfs")
+        val ref = FirebaseDatabase.getInstance().getReference("Modul")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     pdfArrayList.clear()

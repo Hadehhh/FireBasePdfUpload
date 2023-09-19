@@ -105,7 +105,7 @@ class PdfActivity : AppCompatActivity() {
         val timestamp=System.currentTimeMillis()
 
 //        path of pdf in firebase storage
-        val filePathAndName="Pdfs/$timestamp"
+        val filePathAndName="Modul/$timestamp"
 
 //        storage ref
         val storageReference= FirebaseStorage.getInstance().getReference(filePathAndName)
@@ -144,8 +144,8 @@ class PdfActivity : AppCompatActivity() {
         hashMap["url"]="$uploadedPdfUrl"
         hashMap["timestamp"]=timestamp
 
-//        db reference DB> Pdfs >pdfId >(PdfInfo)
-        val ref= FirebaseDatabase.getInstance().getReference("Pdfs")
+//        db reference DB> Modul >pdfId >(PdfInfo)
+        val ref= FirebaseDatabase.getInstance().getReference("Modul")
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
