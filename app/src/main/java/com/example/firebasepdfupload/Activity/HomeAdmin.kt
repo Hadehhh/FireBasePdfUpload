@@ -1,6 +1,5 @@
 package com.example.firebasepdfupload.Activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firebasepdfupload.Adapter.AdapterCategory
 import com.example.firebasepdfupload.Model.ModelCategory
-import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityHomeAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

@@ -1,6 +1,5 @@
 package com.example.firebasepdfupload.Activity
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle

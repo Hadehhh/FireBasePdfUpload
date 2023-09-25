@@ -7,11 +7,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasepdfupload.Adapter.AdapterPdfAdmin
-import com.example.firebasepdfupload.Adapter.AdapterSearch
 import com.example.firebasepdfupload.Model.ModelPdf
-import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityListAllPdfAdminBinding
-import com.example.firebasepdfupload.databinding.ActivitySearchBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

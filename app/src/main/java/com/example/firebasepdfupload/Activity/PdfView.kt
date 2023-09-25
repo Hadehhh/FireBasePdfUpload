@@ -1,9 +1,7 @@
 package com.example.firebasepdfupload.Activity
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.firebasepdfupload.MaxSize
 import com.example.firebasepdfupload.databinding.ActivityPdfViewBinding

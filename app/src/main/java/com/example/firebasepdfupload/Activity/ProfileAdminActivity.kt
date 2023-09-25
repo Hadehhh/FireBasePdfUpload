@@ -1,16 +1,12 @@
 package com.example.firebasepdfupload.Activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.firebasepdfupload.Adapter.AdapterPdfFav
-import com.example.firebasepdfupload.Model.ModelPdf
 import com.example.firebasepdfupload.R
 import com.example.firebasepdfupload.databinding.ActivityProfileAdminBinding
-import com.example.firebasepdfupload.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -24,8 +20,6 @@ class ProfileAdminActivity : AppCompatActivity() {
 
     //    firebase current user
     private lateinit var firebaseUser: FirebaseUser
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

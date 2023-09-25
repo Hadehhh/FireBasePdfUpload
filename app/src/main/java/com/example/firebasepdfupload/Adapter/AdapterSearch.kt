@@ -17,7 +17,6 @@ import com.example.firebasepdfupload.Filters.FilterSearch
 import com.example.firebasepdfupload.Model.ModelPdf
 import com.example.firebasepdfupload.databinding.RowSearchBinding
 
-
 class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterable {
     //    context , get using constructor
     private  var context: Context

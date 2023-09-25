@@ -1,7 +1,5 @@
 package com.example.firebasepdfupload.Activity
 
-import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -107,7 +105,6 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun loadUserInfo() {
 
 //        db ref to load user info
