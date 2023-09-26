@@ -33,10 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_bold"
-            android:text="Ubah Rincian Pdf"
+            android:text="Ubah Rincian Modul"
             android:textAlignment="center"
             android:textColor="@color/blueText"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
     </RelativeLayout>
 

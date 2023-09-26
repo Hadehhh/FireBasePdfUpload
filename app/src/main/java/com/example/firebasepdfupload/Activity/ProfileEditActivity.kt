@@ -140,7 +140,7 @@ class ProfileEditActivity : AppCompatActivity() {
                     try{
                         Glide.with(this@ProfileEditActivity)
                             .load(profilePic)
-                            .placeholder(R.drawable.logo)
+                            .placeholder(R.drawable.person)
                             .into(binding.profileTv)
                     }
                     catch (e:Exception){

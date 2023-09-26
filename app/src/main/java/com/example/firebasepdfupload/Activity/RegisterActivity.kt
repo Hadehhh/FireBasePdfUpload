@@ -160,7 +160,7 @@ class RegisterActivity : AppCompatActivity() {
 //                user info saved dashboard open
                 hideProgressDialog()
                 Toast.makeText(this,"Akun berhasil dibuat", Toast.LENGTH_SHORT).show()
-//                val intent= Intent(this@RegisterActivity, DashBoardUserActivity::class.java)
+                val intent= Intent(this@RegisterActivity, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
 

@@ -188,6 +188,7 @@ class HomeUser : AppCompatActivity() {
                     try{
                         Glide.with(this@HomeUser)
                             .load(profilePic)
+                            .placeholder(R.drawable.person)
                             .into(binding.userImage)
                     }
                     catch (e:Exception){

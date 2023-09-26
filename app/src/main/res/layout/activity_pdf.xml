@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_bold"
-            android:text="Unggah Pdf"
+            android:text="Unggah Modul"
             android:textAlignment="center"
             android:textColor="@color/blueText"
             android:textSize="30sp" />
