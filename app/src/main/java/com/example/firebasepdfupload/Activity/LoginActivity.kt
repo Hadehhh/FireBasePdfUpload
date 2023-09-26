@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnSuccessListener {
                         checkUser()
                     }
-                    .addOnFailureListener{
+                    .addOnFailureListener {
                         hideProgressDialog()
                         Toast.makeText(this,"Login Failed due to ${it.message}", Toast.LENGTH_SHORT).show()
                     }
@@ -120,16 +120,11 @@ class LoginActivity : AppCompatActivity() {
                             val intent= Intent(this@LoginActivity, HomeAdmin::class.java)
                             startActivity(intent)
                             finish()
-
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
-
                     }
-
-
                 })
-
         }
     }
     private fun validateLoginDetails(): Boolean {

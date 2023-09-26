@@ -62,7 +62,7 @@
         app:boxStrokeColor="@color/blueText"
         app:hintTextColor="@color/blueText"
         app:counterEnabled="true"
-        app:counterMaxLength="25">
+        app:counterMaxLength="32">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pdf_title_edt"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Judul"
-            android:maxLength="17"
+            android:maxLength="32"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 

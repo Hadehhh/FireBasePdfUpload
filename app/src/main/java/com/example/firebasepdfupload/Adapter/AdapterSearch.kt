@@ -75,7 +75,7 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
 
 //        set data
         holder.titleTv.text=title
-        holder.descriptionTv.text=description
+//        holder.descriptionTv.text=description
         holder.dateTv.text=date
 
         MainActivity.loadCategory(categoryId, holder.categoryTv)
@@ -97,7 +97,7 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.HolderSearch>, Filterab
         var pdfView=binding.pdfViewSearch
         var progressBar=binding.ProgressBar
         var titleTv=binding.tvTitle
-        var descriptionTv=binding.descriptionTv
+//        var descriptionTv=binding.descriptionTv
         var categoryTv=binding.tvCategory
         var sizeTv=binding.tvSize
         var dateTv=binding.tvDate

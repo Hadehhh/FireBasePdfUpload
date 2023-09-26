@@ -52,21 +52,10 @@
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_toEndOf="@id/pdfRl"
             android:layout_below="@id/category_Tv"
-            android:maxLines="2"
+            android:maxLines="3"
             android:text="Judul"
             android:ellipsize="end"
             />
-        <TextView
-            android:id="@+id/description_Tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_Tv"
-            style="@style/TextAppearance.MaterialComponents.Body2"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:layout_toEndOf="@id/pdfRl"
-            android:maxLines="4"
-            android:text="Deskripsi" />
 
         <TextView
             android:id="@+id/size_tv"

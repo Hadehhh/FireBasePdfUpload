@@ -99,7 +99,7 @@ class AdapterPdfFav  : RecyclerView.Adapter<AdapterPdfFav.HolderPdfFav>{
                     //        set data
 
                     holder.titleTv.text=title
-                    holder.descriptionTv.text=description
+//                    holder.descriptionTv.text=description
                     holder.dateTv.text=formattedDate
 
                 }
@@ -117,7 +117,7 @@ class AdapterPdfFav  : RecyclerView.Adapter<AdapterPdfFav.HolderPdfFav>{
         val pdfView=binding.pdfView
         val progressBar=binding.ProgressBar
         val titleTv=binding.titleTv
-        val descriptionTv=binding.descriptionTv
+//        val descriptionTv=binding.descriptionTv
         val categoryTv=binding.categoryTv
         val sizeTv=binding.sizeTv
         val dateTv=binding.dateTv

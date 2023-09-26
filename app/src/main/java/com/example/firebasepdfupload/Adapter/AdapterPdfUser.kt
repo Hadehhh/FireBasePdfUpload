@@ -71,7 +71,7 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 
 //        set data
         holder.titleTv.text = title
-        holder.descriptionTv.text = description
+//        holder.descriptionTv.text = description
         holder.dateTv.text = date
 
         MainActivity.loadPdfFromUrlSinglePage(url, title, holder.pdfView, holder.progressBar, null)
@@ -93,7 +93,7 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
         var pdfView=binding.pdfView
         var progressBar=binding.ProgressBar
         var titleTv=binding.titleTv
-        var descriptionTv=binding.descriptionTv
+//        var descriptionTv=binding.descriptionTv
         var categoryTv=binding.categoryTv
         var sizeTv=binding.sizeTv
         var dateTv=binding.dateTv
