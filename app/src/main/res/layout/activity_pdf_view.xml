@@ -31,8 +31,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="@color/blueText"
             android:fontFamily="@font/poppins_bold"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textSize="15sp"/>
         <TextView
             android:id="@+id/sub_title_tv"
             android:layout_width="wrap_content"

@@ -70,7 +70,7 @@ class ProfileAdminActivity : AppCompatActivity() {
                     try{
                         Glide.with(this@ProfileAdminActivity)
                             .load(profilePic)
-                            .placeholder(R.drawable.logo)
+                            .placeholder(R.drawable.person)
                             .into(binding.profileImage)
                     }
                     catch (e:Exception){
